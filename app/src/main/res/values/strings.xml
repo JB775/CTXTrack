@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CTXTrack</string>
+    <string name="ctx_track">CTX Track</string>
+    <string name="action_settings">Settings</string>
+    <string name="submit_button">Submit and Continue to First Stop</string>
+    <string name="insert_truck_number">Insert Truck #</string>
+    <string name="insert_trailer_number">Insert Trailer #</string>
+    <string name="insert_start_of_shift_time">Insert Start of Shift Time</string>
+    <string name="insert_delran_departure_time">Insert Initial Delran Departure Time</string>
+    <string name="title_activity_first_stop">FirstStop</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
