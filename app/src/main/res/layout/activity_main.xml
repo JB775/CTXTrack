@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/shiftStart_editText"
-        android:inputType="time"
+
         android:layout_below="@+id/trailer_editText"
         android:layout_centerHorizontal="true"
         android:hint="@string/insert_start_of_shift_time"/>

@@ -11,5 +11,23 @@
     <string name="insert_delran_departure_time">Insert Initial Delran Departure Time</string>
     <string name="title_activity_first_stop">FirstStop</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_start_screen">StartScreen</string>
+    <string name="insert_login">Insert Username</string>
+    <string name="username">Username:</string>
+    <string name="insert_username">Insert Username!</string>
+    <string name="password">Password:</string>
+    <string name="insert_password">Insert Password!</string>
+    <string name="login">Login</string>
+    <string name="stop_1">Stop #1</string>
+    <string name="click_upon_arrival_first">Click Upon Arrival to 1st Stop</string>
+    <string name="click_first_departure">Click Upon Departure of 1st Stop</string>
+    <string name="if_you_dropped_trailer">IF YOU DROPPED A TRAILER, ENTER NEW TRAILER NUMBER:</string>
+    <string name="insert_new_trailer_number">Insert New Trailer #</string>
+    <string name="title_activity_second_stop">SecondStop</string>
+    <string name="stop_2">Stop #2 or Delran</string>
+    <string name="click_upon_arrival_second">Click Upon Arrival to 2nd Stop</string>
+    <string name="click_second_departure">Click Upon Departure of 2nd Stop</string>
+    <string name="click_back_in_delran">Click Upon Arrival to CTX Delran</string>
+    <string name="end_shift">End Shift</string>
 
 </resources>

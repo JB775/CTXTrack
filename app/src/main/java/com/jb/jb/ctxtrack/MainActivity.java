@@ -102,7 +102,7 @@ public class MainActivity extends Activity {
             String truckNum = truckNumber.getText().toString();
             String trailerNum = trailerNumber.getText().toString();
             String trailerNum2 = trailerNumber.getText().toString();
-            //String shiftBegin = shiftStart.getText().toString();
+            String shiftBegin = shiftStart.getText().toString();
             //String delranDepart = delranDeparture.getText().toString();
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
             params.add(new BasicNameValuePair("name", truckNum));
             params.add(new BasicNameValuePair("price", trailerNum));
             params.add(new BasicNameValuePair("description", trailerNum2));
-            //params.add(new BasicNameValuePair("shiftBegin", shiftBegin));
+            params.add(new BasicNameValuePair("starttime", shiftBegin));
             //params.add(new BasicNameValuePair("delranDepart", delranDepart));
 // getting JSON Object
 // Note that create product url accepts POST method

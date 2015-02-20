@@ -3,12 +3,12 @@ package com.jb.jb.ctxtrack;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class FirstStop extends Activity {
+public class StartScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_stop);
+        setContentView(R.layout.activity_start_screen);
     }
 
 

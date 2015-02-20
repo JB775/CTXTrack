@@ -20,6 +20,24 @@
             android:name=".FirstStop"
             android:label="@string/title_activity_first_stop" >
         </activity>
+        <activity
+            android:name=".StartScreen"
+            android:label="@string/title_activity_start_screen" >
+        </activity>
+        <activity
+            android:name=".SecondStop"
+            android:label="@string/title_activity_second_stop"
+            android:parentActivityName=".FirstStop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jb.jb.ctxtrack.FirstStop" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
