@@ -1,11 +1,13 @@
 package com.jb.jb.ctxtrack;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class SecondStop extends Activity {
 
@@ -24,6 +26,17 @@ public class SecondStop extends Activity {
         arrivedSecondStopButton = (Button) findViewById(R.id.arrivedSecondStop);
         departedSecondStopButton = (Button) findViewById(R.id.departedSecondStop);
         enterTrailerEditText = (EditText) findViewById(R.id.enterTrailerEditText);
+
+        TextView Textv = (TextView)findViewById(R.id.textView);
+
+        Intent iin= getIntent();
+        Bundle b = iin.getExtras();
+
+        if(b!=null)
+        {
+            String j =(String) b.get("name");
+            Textv.setText(j);
+        }
     }
 
 
