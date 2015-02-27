@@ -21,7 +21,7 @@
     <string name="stop_1">Stop #1</string>
     <string name="click_upon_arrival_first">Click Upon Arrival to 1st Stop</string>
     <string name="click_first_departure">Click Upon Departure of 1st Stop</string>
-    <string name="if_you_dropped_trailer">IF YOU DROPPED A TRAILER, ENTER NEW TRAILER NUMBER:</string>
+    <string name="if_you_dropped_trailer">IF YOU DROPPED A TRAILER, ENTER NEW TRAILER NUMBER HERE</string>
     <string name="insert_new_trailer_number">Insert New Trailer #</string>
     <string name="title_activity_second_stop">SecondStop</string>
     <string name="stop_2">Stop #2 or Delran</string>
@@ -34,5 +34,8 @@
     <string name="arrival_time_submitted">Arrival Time Submitted!</string>
     <string name="departure_time_submitted">Departure Time Submitted!</string>
     <string name="ended_shift_submitted">Shift Ended!</string>
+    <string name="or_text">OR</string>
+    <string name="title_activity_back_in_delran">BackInDelran</string>
+    <string name="submit_button_continue_next_stop">Submit and Continue to Next Stop</string>
 
 </resources>

@@ -57,7 +57,8 @@ public class MainActivity extends Activity {
         submitAndGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new InfoBegin().execute();
+                //need to set up correct php files
+                //new InfoBegin().execute();
 
                 intentTruckNumber = truckNumber.getText().toString();
                 intentTrailerNumber = trailerNumber.getText().toString();

@@ -23,6 +23,7 @@ public class FirstStop extends Activity {
 
     private String intentTrailerNumber;
     private String intentTruckNumber;
+    private String intentNewTrailerNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +64,14 @@ public class FirstStop extends Activity {
                 Intent intent = new Intent(FirstStop.this, SecondStop.class);
                 intentTruckNumber = truckTextview.getText().toString();
                 intentTrailerNumber = trailerTextview.getText().toString();
+                //use trim();????
+                intentNewTrailerNumber = enteredTrailer.getText().toString();
                 //EditText editText = (EditText) findViewById(R.id.edit_message);
                 //String message = enteredTrailer.getText().toString();
 
                 intent.putExtra("intentTrailerNumber", intentTrailerNumber);
                 intent.putExtra("intentTruckNumber", intentTruckNumber);
+                intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
                 startActivity(intent);
             }
         });
