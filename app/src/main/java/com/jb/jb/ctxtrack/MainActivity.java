@@ -26,6 +26,9 @@ public class MainActivity extends Activity {
     // Progress Dialog
     private ProgressDialog pDialog;
     JSONParser jsonParser = new JSONParser();
+    private String intentTruckNumber;
+    private String intentTrailerNumber;
+
 
 
     EditText truckNumber;
@@ -54,8 +57,16 @@ public class MainActivity extends Activity {
         submitAndGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 new InfoBegin().execute();
+
+                intentTruckNumber = truckNumber.getText().toString();
+                intentTrailerNumber = trailerNumber.getText().toString();
+                Intent intent = new Intent(MainActivity.this, FirstStop.class);
+                intent.putExtra("intentTruckNumber", intentTruckNumber);
+                intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                startActivity(intent);
+
+
 
             }
         });
@@ -123,9 +134,9 @@ public class MainActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
 // successfully created product
-                    Intent i = new Intent(getApplicationContext(), FirstStop.class);
+                   // Intent i = new Intent(getApplicationContext(), FirstStop.class);
 
-                    startActivity(i);
+                   // startActivity(i);
 // closing this screen
                     finish();
                 } else {

@@ -29,5 +29,10 @@
     <string name="click_second_departure">Click Upon Departure of 2nd Stop</string>
     <string name="click_back_in_delran">Click Upon Arrival to CTX Delran</string>
     <string name="end_shift">End Shift</string>
+    <string name="truck_number_id">TRUCK NUMBER</string>
+    <string name="trailer_number_id">TRAILER NUMBER</string>
+    <string name="arrival_time_submitted">Arrival Time Submitted!</string>
+    <string name="departure_time_submitted">Departure Time Submitted!</string>
+    <string name="ended_shift_submitted">Shift Ended!</string>
 
 </resources>

@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SecondStop extends Activity {
 
@@ -16,6 +18,10 @@ public class SecondStop extends Activity {
     Button arrivedSecondStopButton;
     Button departedSecondStopButton;
     EditText enterTrailerEditText;
+    TextView truckTextview;
+    TextView trailerTextview;
+    private String a;
+    private String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +32,70 @@ public class SecondStop extends Activity {
         arrivedSecondStopButton = (Button) findViewById(R.id.arrivedSecondStop);
         departedSecondStopButton = (Button) findViewById(R.id.departedSecondStop);
         enterTrailerEditText = (EditText) findViewById(R.id.enterTrailerEditText);
+        truckTextview = (TextView) findViewById(R.id.truckNumID);
+        trailerTextview = (TextView) findViewById(R.id.trailerNumID);
 
-        TextView Textv = (TextView)findViewById(R.id.textView);
 
-        Intent iin= getIntent();
-        Bundle b = iin.getExtras();
 
-        if(b!=null)
-        {
-            String j =(String) b.get("name");
-            Textv.setText(j);
+        Intent intent = getIntent();
+        if(intent != null) {
+            a = intent.getStringExtra("intentTrailerNumber");
+            b = intent.getStringExtra("intentTruckNumber");
+            trailerTextview.setText(a);
+            truckTextview.setText(b);
         }
+         //Intent iin= getIntent();
+//        Bundle b = iin.getExtras();
+//
+//        if(b!=null)
+//        {
+//            String j =(String) b.get("trailerNumber");
+//            mainTextview.setText(j);
+//        }
+
+        arrivedSecondStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+
+        departedSecondStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+
+        backInDelranButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+
+        endShiftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(), R.string.ended_shift_submitted, Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
     }
 
 

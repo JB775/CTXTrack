@@ -16,7 +16,7 @@
         android:layout_marginTop="31dp"
         android:textSize="25dp"
         android:gravity="center_horizontal"
-        android:id="@+id/stop1"
+        android:id="@+id/stop2"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"/>
 
@@ -26,7 +26,8 @@
         android:id="@+id/imageView"
         android:src="@drawable/ctx2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
         android:layout_marginTop="31dp"
         android:gravity="center"
         android:textSize="17dp"
-        android:layout_below="@+id/stop1"
+        android:layout_below="@+id/stop2"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -106,18 +107,49 @@
         android:layout_height="wrap_content"
         android:text="@string/end_shift"
         android:id="@+id/endShiftButton"
-        android:layout_toRightOf="@+id/enterTrailerEditText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="left|right|center"/>
+        android:layout_gravity="left|right|center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/stop1"
-        android:layout_centerHorizontal="true" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/truck_number_id"
+        android:id="@+id/truckNum"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="-------------"
+        android:id="@+id/truckNumID"
+        android:layout_below="@+id/truckNum"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/trailer_number_id"
+        android:id="@+id/trailerNum"
+        android:layout_below="@+id/truckNumID"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="-------------"
+        android:id="@+id/trailerNumID"
+        android:layout_below="@+id/trailerNum"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>
