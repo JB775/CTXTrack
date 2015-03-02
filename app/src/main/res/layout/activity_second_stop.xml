@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_upon_arrival_second"
-        android:id="@+id/arrivedSecondStop"
+        android:id="@+id/arrivedFirstStop"
         android:layout_marginTop="31dp"
         android:gravity="center"
         android:textSize="17dp"
@@ -56,9 +56,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:layout_toLeftOf="@+id/arrivedSecondStop"
-        android:layout_alignBaseline="@+id/arrivedSecondStop"
-        android:layout_alignBottom="@+id/arrivedSecondStop"
+        android:layout_toLeftOf="@+id/arrivedFirstStop"
+        android:layout_alignBaseline="@+id/arrivedFirstStop"
+        android:layout_alignBottom="@+id/arrivedFirstStop"
         android:layout_centerHorizontal="true"/>
 
     <EditText
@@ -128,7 +128,15 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/or_text"
         android:id="@+id/orTextView"
-        android:layout_below="@+id/arrivedSecondStop"
+        android:layout_below="@+id/arrivedFirstStop"
         android:layout_centerHorizontal="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_alignTop="@+id/arrivedFirstStop"
+        android:layout_alignRight="@+id/trailerNum"
+        android:layout_alignEnd="@+id/trailerNum" />
 
 </RelativeLayout>

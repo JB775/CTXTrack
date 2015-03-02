@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,11 +15,12 @@ public class FirstStop extends Activity {
     private String a;
     private String b;
 
-    Button arrivedFirstStop;
-    Button departedFirstStop;
-    EditText enteredTrailer;
-    TextView truckTextview;
-    TextView trailerTextview;
+    private Button arrivedFirstStop;
+    private Button departedFirstStop;
+    private EditText enteredTrailer;
+    private TextView truckTextview;
+    private TextView trailerTextview;
+    private CheckBox checkBox;
 
 
     private String intentTrailerNumber;
@@ -29,11 +31,12 @@ public class FirstStop extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_stop);
-        arrivedFirstStop = (Button) findViewById(R.id.arrivedSecondStop);
+        arrivedFirstStop = (Button) findViewById(R.id.arrivedFirstStop);
         departedFirstStop = (Button) findViewById(R.id.departedSecondStop);
         enteredTrailer = (EditText) findViewById(R.id.enterTrailerEditText);
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
 
         Intent intent = getIntent();{
             a = intent.getStringExtra("intentTruckNumber");
@@ -48,7 +51,7 @@ public class FirstStop extends Activity {
             public void onClick(View v) {
 
                 Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
-
+                checkBox.setChecked(true);
 
 
             }

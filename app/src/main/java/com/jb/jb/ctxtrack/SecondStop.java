@@ -14,14 +14,14 @@ import android.widget.Toast;
 
 public class SecondStop extends Activity {
 
-    Button backInDelranButton;
-    Button endShiftButton;
-    Button arrivedSecondStopButton;
-    Button departedSecondStopButton;
-    EditText enterTrailerEditText;
-    TextView truckTextview;
-    TextView trailerTextview;
-    CheckBox checkBox;
+    private Button backInDelranButton;
+    private Button endShiftButton;
+    private Button arrivedSecondStopButton;
+    private Button departedSecondStopButton;
+    private EditText enterTrailerEditText;
+    private TextView truckTextview;
+    private TextView trailerTextview;
+    private CheckBox checkBox;
     private String a;
     private String b;
     private String c;
@@ -32,7 +32,7 @@ public class SecondStop extends Activity {
         setContentView(R.layout.activity_second_stop);
         backInDelranButton = (Button) findViewById(R.id.backInDelranButton);
         endShiftButton = (Button) findViewById(R.id.endShiftButton);
-        arrivedSecondStopButton = (Button) findViewById(R.id.arrivedSecondStop);
+        arrivedSecondStopButton = (Button) findViewById(R.id.arrivedFirstStop);
         departedSecondStopButton = (Button) findViewById(R.id.departedSecondStop);
         enterTrailerEditText = (EditText) findViewById(R.id.enterTrailerEditText);
         truckTextview = (TextView) findViewById(R.id.truckNumID);
