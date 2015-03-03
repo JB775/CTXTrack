@@ -25,17 +25,19 @@ public class MainActivity extends Activity {
 
     // Progress Dialog
     private ProgressDialog pDialog;
+
+    //make JSONParser private???
     JSONParser jsonParser = new JSONParser();
     private String intentTruckNumber;
     private String intentTrailerNumber;
 
 
 
-    EditText truckNumber;
-    EditText trailerNumber;
-    EditText shiftStart;
-    EditText delranDeparture;
-    Button submitAndGo;
+    private EditText truckNumber;
+    private EditText trailerNumber;
+    private EditText truckMileage;
+    private EditText delranDeparture;
+    private Button submitAndGo;
 
     //edit this to correct server address
     private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
@@ -51,7 +53,7 @@ public class MainActivity extends Activity {
         submitAndGo = (Button) findViewById(R.id.submit_button);
         truckNumber = (EditText) findViewById(R.id.truck_number_editText);
         trailerNumber = (EditText) findViewById(R.id.trailer_editText);
-        shiftStart = (EditText) findViewById(R.id.shiftStart_editText);
+        truckMileage = (EditText) findViewById(R.id.truck_mileage);
         delranDeparture = (EditText) findViewById(R.id.delranDepartureTime_editText);
 
         submitAndGo.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +116,7 @@ public class MainActivity extends Activity {
             String truckNum = truckNumber.getText().toString();
             String trailerNum = trailerNumber.getText().toString();
             String trailerNum2 = trailerNumber.getText().toString();
-            String shiftBegin = shiftStart.getText().toString();
+            String shiftBegin = truckMileage.getText().toString();
             //String delranDepart = delranDeparture.getText().toString();
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();

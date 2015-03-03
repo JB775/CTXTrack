@@ -44,7 +44,7 @@
         android:id="@+id/delranDepartureTime_editText"
         android:inputType="time"
         android:hint="@string/insert_delran_departure_time"
-        android:layout_below="@+id/shiftStart_editText"
+        android:layout_below="@+id/truck_mileage"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -59,11 +59,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/shiftStart_editText"
+        android:id="@+id/truck_mileage"
 
         android:layout_below="@+id/trailer_editText"
         android:layout_centerHorizontal="true"
-        android:hint="@string/insert_start_of_shift_time"/>
+        android:hint="@string/insert_truck_mileage"/>
 
 
 

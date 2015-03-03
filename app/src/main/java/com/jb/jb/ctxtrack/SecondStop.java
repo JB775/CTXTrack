@@ -19,6 +19,7 @@ public class SecondStop extends Activity {
     private Button arrivedSecondStopButton;
     private Button departedSecondStopButton;
     private EditText enterTrailerEditText;
+    private EditText notesEditText;
     private TextView truckTextview;
     private TextView trailerTextview;
     private CheckBox checkBox;
@@ -38,6 +39,7 @@ public class SecondStop extends Activity {
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+        notesEditText = (EditText) findViewById(R.id.notes);
 
 
 

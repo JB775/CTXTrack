@@ -21,6 +21,7 @@ public class FirstStop extends Activity {
     private TextView truckTextview;
     private TextView trailerTextview;
     private CheckBox checkBox;
+    private EditText notesEditText;
 
 
     private String intentTrailerNumber;
@@ -37,6 +38,7 @@ public class FirstStop extends Activity {
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+        notesEditText = (EditText) findViewById(R.id.notes);
 
         Intent intent = getIntent();{
             a = intent.getStringExtra("intentTruckNumber");
