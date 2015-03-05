@@ -15,7 +15,6 @@ import android.widget.Toast;
 public class SecondStop extends Activity {
 
     private Button backInDelranButton;
-    private Button endShiftButton;
     private Button arrivedSecondStopButton;
     private Button departedSecondStopButton;
     private EditText enterTrailerEditText;
@@ -32,7 +31,6 @@ public class SecondStop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_stop);
         backInDelranButton = (Button) findViewById(R.id.backInDelranButton);
-        endShiftButton = (Button) findViewById(R.id.endShiftButton);
         arrivedSecondStopButton = (Button) findViewById(R.id.arrivedFirstStop);
         departedSecondStopButton = (Button) findViewById(R.id.departedSecondStop);
         enterTrailerEditText = (EditText) findViewById(R.id.enterTrailerEditText);
@@ -99,16 +97,6 @@ public class SecondStop extends Activity {
             }
         });
 
-        endShiftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(getApplicationContext(), R.string.ended_shift_submitted, Toast.LENGTH_LONG).show();
-
-
-
-            }
-        });
     }
 
 

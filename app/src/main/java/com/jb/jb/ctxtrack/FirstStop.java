@@ -33,7 +33,7 @@ public class FirstStop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_stop);
         arrivedFirstStop = (Button) findViewById(R.id.arrivedFirstStop);
-        departedFirstStop = (Button) findViewById(R.id.departedSecondStop);
+        departedFirstStop = (Button) findViewById(R.id.departedFirstStop);
         enteredTrailer = (EditText) findViewById(R.id.enterTrailerEditText);
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
