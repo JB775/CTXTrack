@@ -39,5 +39,6 @@
     <string name="submit_button_continue_next_stop">Submit and Continue to Next Stop</string>
     <string name="add_notes_for_dispatchers_here">ADD ANY EXTRA NOTES FOR DISPATCHERS HERE....</string>
     <string name="insert_truck_mileage">Insert Truck Mileage</string>
+    <string name="user">USER</string>
 
 </resources>

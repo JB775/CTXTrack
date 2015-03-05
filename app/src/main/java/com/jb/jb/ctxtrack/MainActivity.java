@@ -35,12 +35,14 @@ public class MainActivity extends Activity {
 
     private EditText truckNumber;
     private EditText trailerNumber;
-    private EditText truckMileage;
+    private EditText truckMiles;
     private EditText delranDeparture;
     private Button submitAndGo;
 
     //edit this to correct server address
-    private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
+    //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
+    //private static String url_create_product = "http://localhost/ctxtrack/activity_main.php";
+    private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
 
     private static final String TAG_SUCCESS = "success";
 
@@ -53,22 +55,22 @@ public class MainActivity extends Activity {
         submitAndGo = (Button) findViewById(R.id.submit_button);
         truckNumber = (EditText) findViewById(R.id.truck_number_editText);
         trailerNumber = (EditText) findViewById(R.id.trailer_editText);
-        truckMileage = (EditText) findViewById(R.id.truck_mileage);
+        truckMiles = (EditText) findViewById(R.id.truck_mileage);
         delranDeparture = (EditText) findViewById(R.id.delranDepartureTime_editText);
 
         submitAndGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //need to set up correct php files
-                //new InfoBegin().execute();
+                new InfoBegin().execute();
 
-                intentTruckNumber = truckNumber.getText().toString();
-                intentTrailerNumber = trailerNumber.getText().toString();
-                Intent intent = new Intent(MainActivity.this, FirstStop.class);
-                intent.putExtra("intentTruckNumber", intentTruckNumber);
-                intent.putExtra("intentTrailerNumber", intentTrailerNumber);
-                startActivity(intent);
-
+//                intentTruckNumber = truckNumber.getText().toString();
+//                intentTrailerNumber = trailerNumber.getText().toString();
+//                Intent intent = new Intent(MainActivity.this, FirstStop.class);
+//                intent.putExtra("intentTruckNumber", intentTruckNumber);
+//                intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+//                startActivity(intent);
+//
 
 
             }
@@ -105,7 +107,7 @@ public class MainActivity extends Activity {
             super.onPreExecute();
             pDialog = new ProgressDialog(MainActivity.this);
             pDialog.setMessage("Updating Information...");
-           pDialog.setIndeterminate(false);
+            pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
         }
@@ -115,17 +117,17 @@ public class MainActivity extends Activity {
         protected String doInBackground(String... args) {
             String truckNum = truckNumber.getText().toString();
             String trailerNum = trailerNumber.getText().toString();
-            String trailerNum2 = trailerNumber.getText().toString();
-            String shiftBegin = truckMileage.getText().toString();
-            //String delranDepart = delranDeparture.getText().toString();
+            String truckMileage = truckMiles.getText().toString();
+            //String shiftBegin = truckMileage.getText().toString();
+            String delranDepartTime = delranDeparture.getText().toString();
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-            params.add(new BasicNameValuePair("name", truckNum));
-            params.add(new BasicNameValuePair("price", trailerNum));
-            params.add(new BasicNameValuePair("description", trailerNum2));
-            params.add(new BasicNameValuePair("starttime", shiftBegin));
-            //params.add(new BasicNameValuePair("delranDepart", delranDepart));
+            params.add(new BasicNameValuePair("truckNum", truckNum));
+            params.add(new BasicNameValuePair("trailerNum", trailerNum));
+            params.add(new BasicNameValuePair("truckMileage", truckMileage));
+            //params.add(new BasicNameValuePair("starttime", shiftBegin));
+            params.add(new BasicNameValuePair("delranDepartTime", delranDepartTime));
 // getting JSON Object
 // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_product,
@@ -137,9 +139,15 @@ public class MainActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
 // successfully created product
-                   // Intent i = new Intent(getApplicationContext(), FirstStop.class);
+                   //Intent i = new Intent(getApplicationContext(), FirstStop.class);
+                   //startActivity(i);
 
-                   // startActivity(i);
+                    intentTruckNumber = truckNumber.getText().toString();
+                    intentTrailerNumber = trailerNumber.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FirstStop.class);
+                    intent.putExtra("intentTruckNumber", intentTruckNumber);
+                    intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                    startActivity(intent);
 // closing this screen
                     finish();
                 } else {

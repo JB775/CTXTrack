@@ -22,6 +22,7 @@ public class FirstStop extends Activity {
     private TextView trailerTextview;
     private CheckBox checkBox;
     private EditText notesEditText;
+    private TextView userIdStop1;
 
 
     private String intentTrailerNumber;
@@ -39,6 +40,7 @@ public class FirstStop extends Activity {
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         notesEditText = (EditText) findViewById(R.id.notes);
+        userIdStop1 = (TextView) findViewById(R.id.userIdStop1);
 
         Intent intent = getIntent();{
             a = intent.getStringExtra("intentTruckNumber");

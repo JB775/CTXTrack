@@ -87,9 +87,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/truck_number_id"
         android:id="@+id/truckNum"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/userIdStop2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -140,5 +140,25 @@
         android:layout_below="@+id/departedSecondStop"
         android:hint="@string/add_notes_for_dispatchers_here"
         android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/user"
+        android:id="@+id/userStop2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="-------------"
+        android:id="@+id/userIdStop2"
+        android:layout_below="@+id/userStop2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

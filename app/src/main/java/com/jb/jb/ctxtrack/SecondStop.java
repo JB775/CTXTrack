@@ -25,6 +25,7 @@ public class SecondStop extends Activity {
     private String a;
     private String b;
     private String c;
+    private TextView userIdStop2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class SecondStop extends Activity {
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         notesEditText = (EditText) findViewById(R.id.notes);
+        userIdStop2 = (TextView) findViewById(R.id.userIdStop2);
 
 
 
