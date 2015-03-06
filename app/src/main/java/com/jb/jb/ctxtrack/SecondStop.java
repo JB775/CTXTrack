@@ -25,7 +25,9 @@ public class SecondStop extends Activity {
     private String a;
     private String b;
     private String c;
+    private String d;
     private TextView userIdStop2;
+    private String intentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +50,10 @@ public class SecondStop extends Activity {
             a = intent.getStringExtra("intentTrailerNumber");
             b = intent.getStringExtra("intentTruckNumber");
             c = intent.getStringExtra("intentNewTrailerNumber");
+            d = intent.getStringExtra("intentUserId");
 
             truckTextview.setText(b);
+            userIdStop2.setText(d);
             if(c.isEmpty() || c.length() == 0 || c.equals("")) {
                 trailerTextview.setText(a);
             } else {

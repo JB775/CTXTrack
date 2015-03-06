@@ -11,11 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
     JSONParser jsonParser = new JSONParser();
     private String intentTruckNumber;
     private String intentTrailerNumber;
+    private String intentUserId;
 
 
 
@@ -38,12 +41,15 @@ public class MainActivity extends Activity {
     private EditText truckMiles;
     private EditText delranDeparture;
     private Button submitAndGo;
+    private TextView userId;
 
     //edit this to correct server address
     //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
     //private static String url_create_product = "http://localhost/ctxtrack/activity_main.php";
-    //private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
-    private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
+    //delran ip
+    private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
+    //home ip
+    //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
 
 
     private static final String TAG_SUCCESS = "success";
@@ -59,6 +65,13 @@ public class MainActivity extends Activity {
         trailerNumber = (EditText) findViewById(R.id.trailer_editText);
         truckMiles = (EditText) findViewById(R.id.truck_mileage);
         delranDeparture = (EditText) findViewById(R.id.delranDepartureTime_editText);
+        userId = (TextView) findViewById(R.id.userIdMain);
+
+        Intent intent = getIntent();
+        if(intent != null) {
+            intentUserId = intent.getStringExtra("intentUserId");
+            userId.setText(intentUserId);
+        }
 
         submitAndGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,8 +159,11 @@ public class MainActivity extends Activity {
 
                     intentTruckNumber = truckNumber.getText().toString();
                     intentTrailerNumber = trailerNumber.getText().toString();
+                    intentUserId = userId.getText().toString();
+
                     Intent intent = new Intent(getApplicationContext(), FirstStop.class);
                     intent.putExtra("intentTruckNumber", intentTruckNumber);
+                    intent.putExtra("intentUserId", intentUserId);
                     intent.putExtra("intentTrailerNumber", intentTrailerNumber);
                     startActivity(intent);
 // closing this screen

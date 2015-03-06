@@ -14,6 +14,7 @@ public class FirstStop extends Activity {
 
     private String a;
     private String b;
+    private String c;
 
     private Button arrivedFirstStop;
     private Button departedFirstStop;
@@ -23,6 +24,7 @@ public class FirstStop extends Activity {
     private CheckBox checkBox;
     private EditText notesEditText;
     private TextView userIdStop1;
+    private String intentUserId;
 
 
     private String intentTrailerNumber;
@@ -52,8 +54,10 @@ public class FirstStop extends Activity {
         Intent intent = getIntent();{
             a = intent.getStringExtra("intentTruckNumber");
             b = intent.getStringExtra("intentTrailerNumber");
+            c = intent.getStringExtra("intentUserId");
             truckTextview.setText(a);
             trailerTextview.setText(b);
+            userIdStop1.setText(c);
         }
         if(intent != null)
 
@@ -80,12 +84,14 @@ public class FirstStop extends Activity {
                 intentTrailerNumber = trailerTextview.getText().toString();
                 //use trim();????
                 intentNewTrailerNumber = enteredTrailer.getText().toString();
+                intentUserId = userIdStop1.getText().toString();
                 //EditText editText = (EditText) findViewById(R.id.edit_message);
                 //String message = enteredTrailer.getText().toString();
 
                 intent.putExtra("intentTrailerNumber", intentTrailerNumber);
                 intent.putExtra("intentTruckNumber", intentTruckNumber);
                 intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
+                intent.putExtra("intentUserId", intentUserId);
                 startActivity(intent);
             }
         });

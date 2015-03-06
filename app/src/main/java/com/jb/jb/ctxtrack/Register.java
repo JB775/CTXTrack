@@ -34,8 +34,10 @@ public class Register extends Activity implements View.OnClickListener {
     //edit this to correct server address
     //private static String REGISTER_URL = "http://192.168.0.6:1337/ctxtrack/register.php";
     //private static String REGISTER_URL = "http://localhost/ctxtrack/register.php";
-    //private static String REGISTER_URL = "http://192.168.56.101/ctxtrack/register.php";
-    private static final String REGISTER_URL = "http://192.168.56.1:1337/ctxtrack/register.php";
+    //delran ip
+    private static String REGISTER_URL = "http://192.168.56.101/ctxtrack/register.php";
+    //home ip
+    //private static final String REGISTER_URL = "http://192.168.56.1:1337/ctxtrack/register.php";
 
 
     //testing from a real server:

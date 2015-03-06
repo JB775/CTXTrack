@@ -25,6 +25,7 @@ public class Login extends Activity implements View.OnClickListener {
 
     private EditText user, pass;
     private Button mSubmit, mRegister;
+    private String intentUserId;
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -37,8 +38,10 @@ public class Login extends Activity implements View.OnClickListener {
     //edit this to correct server address
     //private static String LOGIN_URL = "http://192.168.0.6:1337/ctxtrack/login.php";
     //private static String LOGIN_URL = "http://localhost/ctxtrack/login.php";
-    //private static String LOGIN_URL = "http://192.168.56.101/ctxtrack/login.php";
-    private static final String LOGIN_URL = "http://192.168.56.1:1337/ctxtrack/login.php";
+    //delran ip
+    private static String LOGIN_URL = "http://192.168.56.101/ctxtrack/login.php";
+    //home ip
+    //private static final String LOGIN_URL = "http://192.168.56.1:1337/ctxtrack/login.php";
 
     // testing from a real server:
     // private static final String LOGIN_URL =
@@ -57,6 +60,7 @@ public class Login extends Activity implements View.OnClickListener {
         // setup input fields
         user = (EditText) findViewById(R.id.username);
         pass = (EditText) findViewById(R.id.password);
+
 
         // setup buttons
         mSubmit = (Button) findViewById(R.id.login);
@@ -129,7 +133,9 @@ public class Login extends Activity implements View.OnClickListener {
                     edit.putString("username", username);
                     edit.commit();
 
+                    intentUserId = user.getText().toString();
                     Intent i = new Intent(Login.this, MainActivity.class);
+                    i.putExtra("intentUserId", intentUserId);
                     finish();
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);
