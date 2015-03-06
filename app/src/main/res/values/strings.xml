@@ -40,5 +40,7 @@
     <string name="add_notes_for_dispatchers_here">ADD ANY EXTRA NOTES FOR DISPATCHERS HERE....</string>
     <string name="insert_truck_mileage">Insert Truck Mileage</string>
     <string name="user">USER</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
 
 </resources>

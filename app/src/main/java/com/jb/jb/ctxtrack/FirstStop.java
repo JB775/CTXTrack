@@ -29,6 +29,13 @@ public class FirstStop extends Activity {
     private String intentTruckNumber;
     private String intentNewTrailerNumber;
 
+    //edit this to correct server address and update to correct php file
+    //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/.php";
+    //private static String url_create_product = "http://localhost/ctxtrack/.php";
+    //private static String url_create_product = "http://192.168.56.101/ctxtrack/.php";
+    private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/first_stop.php";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
