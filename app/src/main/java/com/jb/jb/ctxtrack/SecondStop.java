@@ -22,6 +22,7 @@ public class SecondStop extends Activity {
     private TextView truckTextview;
     private TextView trailerTextview;
     private CheckBox checkBox;
+    private CheckBox checkBox2;
     private String a;
     private String b;
     private String c;
@@ -40,6 +41,7 @@ public class SecondStop extends Activity {
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+        checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
         notesEditText = (EditText) findViewById(R.id.notes);
         userIdStop2 = (TextView) findViewById(R.id.userIdStop2);
 
@@ -89,6 +91,7 @@ public class SecondStop extends Activity {
 
 
 
+
             }
         });
 
@@ -97,7 +100,7 @@ public class SecondStop extends Activity {
             public void onClick(View v) {
 
                 Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
-
+                checkBox2.setChecked(true);
 
 
             }

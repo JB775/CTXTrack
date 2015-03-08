@@ -1,10 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@android:style/Theme.NoTitleBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.jb.jb.ctxtrack.Login">
 
@@ -12,77 +10,81 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login"
+        android:text="@string/register"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/login"
-        android:layout_marginBottom="25dp"
-        android:text="Register" />
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register"
+        android:text="@string/login"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/password"
         android:layout_alignLeft="@+id/password"
-        android:layout_alignRight="@+id/password"
-        android:text="Login" />
+        android:layout_alignStart="@+id/password"
+        android:layout_alignRight="@+id/username"
+        android:layout_alignEnd="@+id/username"
+        android:textSize="17dp"
+        android:textColor="@android:color/black"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/login"
-        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="textPassword" >
+        android:inputType="textPassword"
+        android:layout_below="@+id/passwordTextView"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/insert_password"
+        android:textSize="17dp">
 
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/ctxBanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/header"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:gravity="center"
-        android:text="Android Remote Server Tutorial"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ctx2"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"/>
+        android:adjustViewBounds="true"/>
 
     <TextView
-        android:id="@+id/TextView01"
+        android:id="@+id/passwordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/password"
+        android:text="@string/password"
+        android:layout_below="@+id/username"
         android:layout_alignLeft="@+id/password"
-        android:layout_marginLeft="22dp"
-        android:text="Password" />
+        android:layout_alignStart="@+id/password"
+        android:layout_marginTop="32dp"
+        android:textColor="@android:color/black"
+        android:textSize="22dp"/>
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/TextView01"
+        android:ems="10"
+        android:layout_below="@+id/usernameTextView"
+        android:layout_alignLeft="@+id/usernameTextView"
+        android:layout_alignStart="@+id/usernameTextView"
         android:layout_centerHorizontal="true"
-        android:ems="10" />
+        android:hint="@string/insert_username"
+        android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/TextView01"
-        android:layout_centerVertical="true"
-        android:text="Username" />
+        android:text="@string/username"
+        android:layout_marginTop="72dp"
+        android:textColor="@android:color/black"
+        android:textSize="22dp"
+        android:layout_below="@+id/ctxBanner"
+        android:layout_alignRight="@+id/passwordTextView"
+        android:layout_alignEnd="@+id/passwordTextView"/>
 
 </RelativeLayout>

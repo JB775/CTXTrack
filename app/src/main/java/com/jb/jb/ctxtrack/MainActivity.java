@@ -17,7 +17,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +46,9 @@ public class MainActivity extends Activity {
     //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
     //private static String url_create_product = "http://localhost/ctxtrack/activity_main.php";
     //delran ip
-    private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
+    //private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
     //home ip
-    //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
+    private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
 
 
     private static final String TAG_SUCCESS = "success";
@@ -143,6 +142,7 @@ public class MainActivity extends Activity {
             params.add(new BasicNameValuePair("truckMileage", truckMileage));
             //params.add(new BasicNameValuePair("starttime", shiftBegin));
             params.add(new BasicNameValuePair("delranDepartTime", delranDepartTime));
+            params.add(new BasicNameValuePair("intentUserId", intentUserId));
 // getting JSON Object
 // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_product,

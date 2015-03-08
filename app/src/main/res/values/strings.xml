@@ -29,8 +29,8 @@
     <string name="click_second_departure">Click Upon Departure of 2nd Stop</string>
     <string name="click_back_in_delran">Click Upon Arrival to CTX Delran</string>
     <string name="end_shift">End Shift</string>
-    <string name="truck_number_id">TRUCK NUMBER</string>
-    <string name="trailer_number_id">TRAILER NUMBER</string>
+    <string name="truck_number_id">TRUCK NUMBER:</string>
+    <string name="trailer_number_id">TRAILER NUMBER:</string>
     <string name="arrival_time_submitted">Arrival Time Submitted!</string>
     <string name="departure_time_submitted">Departure Time Submitted!</string>
     <string name="ended_shift_submitted">Shift Ended!</string>
@@ -39,8 +39,10 @@
     <string name="submit_button_continue_next_stop">Submit and Continue to Next Stop</string>
     <string name="add_notes_for_dispatchers_here">ADD ANY EXTRA NOTES FOR DISPATCHERS HERE....</string>
     <string name="insert_truck_mileage">Insert Truck Mileage</string>
-    <string name="user">USER</string>
+    <string name="user">USER:</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_login44">Login44</string>
+    <string name="register">Register</string>
 
 </resources>
