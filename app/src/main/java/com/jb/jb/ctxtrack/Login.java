@@ -39,9 +39,9 @@ public class Login extends Activity implements View.OnClickListener {
     //private static String LOGIN_URL = "http://192.168.0.6:1337/ctxtrack/login.php";
     //private static String LOGIN_URL = "http://localhost/ctxtrack/login.php";
     //delran ip
-    //private static String LOGIN_URL = "http://192.168.56.101/ctxtrack/login.php";
+    private static String LOGIN_URL = "http://192.168.56.101/ctxtrack/login.php";
     //home ip
-    private static final String LOGIN_URL = "http://192.168.56.1:1337/ctxtrack/login.php";
+    //private static final String LOGIN_URL = "http://192.168.56.1:1337/ctxtrack/login.php";
 
 
     // testing from a real server:

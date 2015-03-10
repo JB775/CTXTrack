@@ -46,9 +46,9 @@ public class MainActivity extends Activity {
     //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
     //private static String url_create_product = "http://localhost/ctxtrack/activity_main.php";
     //delran ip
-    //private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
+    private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
     //home ip
-    private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
+    //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
 
 
     private static final String TAG_SUCCESS = "success";
