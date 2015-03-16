@@ -37,7 +37,9 @@ public class Register extends Activity implements View.OnClickListener {
     //delran ip
     //private static String REGISTER_URL = "http://192.168.56.101/ctxtrack/register.php";
     //home ip
-    private static final String REGISTER_URL = "http://192.168.56.1:1337/ctxtrack/register.php";
+    //private static final String REGISTER_URL = "http://192.168.56.1:1337/ctxtrack/register.php";
+    //HostGator
+    private static String REGISTER_URL = "http://www.jabdata.com/ctxtrack/register.php";
 
 
     //testing from a real server:
