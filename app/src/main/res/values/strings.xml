@@ -44,5 +44,6 @@
     <string name="title_activity_register">Register</string>
     <string name="title_activity_login44">Login44</string>
     <string name="register">Register</string>
+    <string name="title_activity_location">LocationActivity</string>
 
 </resources>
