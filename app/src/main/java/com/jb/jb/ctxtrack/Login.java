@@ -116,13 +116,15 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.login:
-              //  if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
                //     if (((Button) v).getText().equals("Start")) {
                         locationrequest = LocationRequest.create();
                         locationrequest.setInterval(100);
-                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
+
+                        // maybe change "this" to 'activityname'.this
+                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, Login.this);
                       //  ((Button) v).setText("Stop");
-                   // }
+                    }
 //                else {
 //                        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, Login.this);
 //                        ((Button) v).setText("Start");

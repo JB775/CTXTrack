@@ -13,11 +13,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -47,6 +51,11 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     private EditText delranDeparture;
     private Button submitAndGo;
     private TextView userId;
+
+    //added 3/17
+    private GoogleApiClient mGoogleApiClient;
+    private LocationRequest locationrequest;
+    private String TAG = this.getClass().getSimpleName();
 
     //edit this to correct server address
     //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
@@ -80,6 +89,26 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             intentUserId = intent.getStringExtra("intentUserId");
             userId.setText(intentUserId);
         }
+
+
+        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resp == ConnectionResult.SUCCESS) {
+            mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .build();
+            mGoogleApiClient.connect();
+        } else {
+            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
+        }
+          if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+        locationrequest = LocationRequest.create();
+        locationrequest.setInterval(100);
+
+        // maybe change "this" to 'activityname'.this...also maybe add if statement about being connected
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
+         }
 
         submitAndGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,23 +155,33 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mGoogleApiClient != null)
+            mGoogleApiClient.disconnect();
+    }
+
+    @Override
     public void onConnectionSuspended(int i) {
 
     }
 
     @Override
     public void onDisconnected() {
-
+        Log.i(TAG, "onDisconnected");
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        if (location != null) {
+            Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
+        }
 
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
+    public void onConnectionFailed(ConnectionResult result) {
+        Log.i(TAG, "onConnectionFailed");
     }
 
 
