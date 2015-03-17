@@ -116,23 +116,24 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.login:
-//                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-//                    if (((Button) v).getText().equals("Start")) {
-//                        locationrequest = LocationRequest.create();
-//                        locationrequest.setInterval(Long.parseLong(etLocationInterval.getText().toString()));
-//                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, Login.this);
-//                        ((Button) v).setText("Stop");
-//                    } else {
+              //  if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+               //     if (((Button) v).getText().equals("Start")) {
+                        locationrequest = LocationRequest.create();
+                        locationrequest.setInterval(100);
+                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
+                      //  ((Button) v).setText("Stop");
+                   // }
+//                else {
 //                        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, Login.this);
 //                        ((Button) v).setText("Start");
 //                    }
-//                }
+  //              }
 
-                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                    locationrequest = LocationRequest.create();
-                    locationrequest.setInterval(100);
-                    LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, mPendingIntent);
-                }
+               // if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                 //   locationrequest = LocationRequest.create();
+                 //   locationrequest.setInterval(100);
+                 //   LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, mPendingIntent);
+                //}
 
                 new AttemptLogin().execute();
                 break;
