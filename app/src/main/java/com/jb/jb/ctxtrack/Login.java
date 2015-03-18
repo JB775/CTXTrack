@@ -122,7 +122,7 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
                         locationrequest.setInterval(100);
 
                         // maybe change "this" to 'activityname'.this
-                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, Login.this);
+                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
                       //  ((Button) v).setText("Stop");
                     }
 //                else {
@@ -151,9 +151,9 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        if (mGoogleApiClient != null)
-            mGoogleApiClient.disconnect();
+       super.onDestroy();
+      //  if (mGoogleApiClient != null)
+       //     mGoogleApiClient.disconnect();
     }
 
     @Override
