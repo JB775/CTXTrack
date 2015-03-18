@@ -63,7 +63,7 @@ public class FirstStop extends Activity implements LocationProvider.LocationCall
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         notesEditText = (EditText) findViewById(R.id.notes);
         userIdStop1 = (TextView) findViewById(R.id.userIdStop1);
-        mainTextView = (TextView) findViewById(R.id.stop1);
+        mainTextView = (TextView) findViewById(R.id.stop6);
 
         Intent intent = getIntent();{
             a = intent.getStringExtra("intentTruckNumber");

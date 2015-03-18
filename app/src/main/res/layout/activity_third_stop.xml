@@ -1,15 +1,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:theme="@android:style/Theme.NoTitleBar"
-    tools:context="com.jb.jb.ctxtrack.SecondStop">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:theme="@android:style/Theme.NoTitleBar"
+                tools:context="com.jb.jb.ctxtrack.ThirdStop">
 
     <TextView
-        android:text="@string/stop_2"
+        android:text="@string/stop_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
@@ -31,7 +31,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/click_upon_arrival_second"
+        android:text="@string/click_upon_arrival_third"
         android:id="@+id/arrivedFirstStop"
         android:layout_marginTop="31dp"
         android:gravity="center"
@@ -42,8 +42,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/click_second_departure"
-        android:id="@+id/departedSecondStop"
+        android:text="@string/click_third_departure"
+        android:id="@+id/departedThirdStop"
         android:gravity="center"
         android:textSize="17dp"
         android:layout_toEndOf="@+id/userStop2"

@@ -25,8 +25,20 @@
     <string name="insert_new_trailer_number">Insert New Trailer #</string>
     <string name="title_activity_second_stop">SecondStop</string>
     <string name="stop_2">Stop #2 or Delran</string>
+    <string name="stop_3">Stop #3 or Delran</string>
+    <string name="stop_4">Stop #4 or Delran</string>
+    <string name="stop_5">Stop #5 or Delran</string>
+    <string name="stop_6">Stop #6 or Delran</string>
     <string name="click_upon_arrival_second">Click Upon Arrival to 2nd Stop</string>
+    <string name="click_upon_arrival_third">Click Upon Arrival to 3rd Stop</string>
+    <string name="click_upon_arrival_fourth">Click Upon Arrival to 4th Stop</string>
+    <string name="click_upon_arrival_fifth">Click Upon Arrival to 5th Stop</string>
+    <string name="click_upon_arrival_sixth">Click Upon Arrival to 6th Stop</string>
     <string name="click_second_departure">Click Upon Departure of 2nd Stop</string>
+    <string name="click_third_departure">Click Upon Departure of 3rd Stop</string>
+    <string name="click_fourth_departure">Click Upon Departure of 4th Stop</string>
+    <string name="click_fifth_departure">Click Upon Departure of 5th Stop</string>
+    <string name="click_sixth_departure">Click Upon Departure of 6th Stop</string>
     <string name="click_back_in_delran">Click Upon Arrival to CTX Delran</string>
     <string name="end_shift">End Shift</string>
     <string name="truck_number_id">TRUCK NUMBER:</string>
@@ -45,5 +57,9 @@
     <string name="title_activity_login44">Login44</string>
     <string name="register">Register</string>
     <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_third_stop">ThirdStop</string>
+    <string name="title_activity_fourth_stop">FourthStop</string>
+    <string name="title_activity_fifth_stop">FifthStop</string>
+    <string name="title_activity_sixth_stop">SixthStop</string>
 
 </resources>

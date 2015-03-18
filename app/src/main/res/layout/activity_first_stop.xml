@@ -16,7 +16,7 @@
         android:layout_marginTop="31dp"
         android:textSize="25dp"
         android:gravity="center_horizontal"
-        android:id="@+id/stop1"
+        android:id="@+id/stop6"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"/>
 
@@ -37,7 +37,7 @@
         android:gravity="center"
         android:textSize="17dp"
         android:layout_marginTop="44dp"
-        android:layout_below="@+id/stop1"
+        android:layout_below="@+id/stop6"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -47,9 +47,10 @@
         android:id="@+id/departedFirstStop"
         android:gravity="center"
         android:textSize="17dp"
-        android:layout_marginTop="59dp"
-        android:layout_below="@+id/enterTrailerEditText"
-        android:layout_centerHorizontal="true" />
+        android:layout_toEndOf="@+id/userStop1"
+        android:layout_marginBottom="31dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/userStop1"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -121,9 +122,10 @@
         android:id="@+id/notes"
         android:hint="@string/add_notes_for_dispatchers_here"
         android:gravity="center"
-        android:layout_below="@+id/departedFirstStop"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_marginBottom="50dp"
+        android:layout_above="@+id/departedFirstStop"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"

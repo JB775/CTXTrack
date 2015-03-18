@@ -24,7 +24,11 @@
             android:name=".FirstStop"
             android:configChanges="orientation"
             android:label="@string/title_activity_first_stop"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jb.jb.ctxtrack.MainActivity" />
         </activity>
         <activity
             android:name=".SecondStop"
@@ -73,6 +77,38 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ThirdStop"
+            android:label="@string/title_activity_third_stop"
+            android:parentActivityName=".SecondStop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jb.jb.ctxtrack.SecondStop" />
+        </activity>
+        <activity
+            android:name=".FourthStop"
+            android:label="@string/title_activity_fourth_stop"
+            android:parentActivityName=".ThirdStop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jb.jb.ctxtrack.ThirdStop" />
+        </activity>
+        <activity
+            android:name=".FifthStop"
+            android:label="@string/title_activity_fifth_stop"
+            android:parentActivityName=".FourthStop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jb.jb.ctxtrack.FourthStop" />
+        </activity>
+        <activity
+            android:name=".SixthStop"
+            android:label="@string/title_activity_sixth_stop"
+            android:parentActivityName=".FifthStop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jb.jb.ctxtrack.FifthStop" />
         </activity>
     </application>
 
