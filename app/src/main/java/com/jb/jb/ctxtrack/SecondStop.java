@@ -28,6 +28,8 @@ public class SecondStop extends Activity {
     private TextView userIdStop2;
     private String intentUserId;
 
+    private static final String TAG_SUCCESS = "success";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

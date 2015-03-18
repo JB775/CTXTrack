@@ -61,5 +61,6 @@
     <string name="title_activity_fourth_stop">FourthStop</string>
     <string name="title_activity_fifth_stop">FifthStop</string>
     <string name="title_activity_sixth_stop">SixthStop</string>
+    <string name="updating_time">Updating Time...</string>
 
 </resources>

@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 public class ThirdStop extends Activity {
 
+    private static final String TAG_SUCCESS = "success";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
