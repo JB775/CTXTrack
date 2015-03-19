@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     private EditText truckMiles;
     private EditText delranDeparture;
     private Button submitAndGo;
-    private TextView userId;
+    private TextView userIdzz;
 
     //added 3/17
     private GoogleApiClient mGoogleApiClient;
@@ -82,13 +82,15 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         trailerNumber = (EditText) findViewById(R.id.trailer_editText);
         truckMiles = (EditText) findViewById(R.id.truck_mileage);
         delranDeparture = (EditText) findViewById(R.id.delranDepartureTime_editText);
-        userId = (TextView) findViewById(R.id.userIdMain);
+        userIdzz = (TextView) findViewById(R.id.userIdMain);
 
         Intent intent = getIntent();
         if(intent != null) {
             intentUserId = intent.getStringExtra("intentUserId");
-            userId.setText(intentUserId);
+            String userId3 = intentUserId;
+            userIdzz.setText(intentUserId);
         }
+
 
 
         int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
@@ -207,6 +209,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             String truckMileage = truckMiles.getText().toString();
             //String shiftBegin = truckMileage.getText().toString();
             String delranDepartTime = delranDeparture.getText().toString();
+            String userId2 = userIdzz.getText().toString();
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
@@ -215,7 +218,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             params.add(new BasicNameValuePair("truckMileage", truckMileage));
             //params.add(new BasicNameValuePair("starttime", shiftBegin));
             params.add(new BasicNameValuePair("delranDepartTime", delranDepartTime));
-            params.add(new BasicNameValuePair("intentUserId", intentUserId));
+            params.add(new BasicNameValuePair("userId2", userId2));
 // getting JSON Object
 // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_product,
@@ -232,11 +235,11 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
 
                     intentTruckNumber = truckNumber.getText().toString();
                     intentTrailerNumber = trailerNumber.getText().toString();
-                    intentUserId = userId.getText().toString();
+                    String intentUserId2 = userIdzz.getText().toString();
 
                     Intent intent = new Intent(getApplicationContext(), FirstStop.class);
                     intent.putExtra("intentTruckNumber", intentTruckNumber);
-                    intent.putExtra("intentUserId", intentUserId);
+                    intent.putExtra("intentUserId", intentUserId2);
                     intent.putExtra("intentTrailerNumber", intentTrailerNumber);
                     startActivity(intent);
 // closing this screen
