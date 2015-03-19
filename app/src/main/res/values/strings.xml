@@ -62,5 +62,6 @@
     <string name="title_activity_fifth_stop">FifthStop</string>
     <string name="title_activity_sixth_stop">SixthStop</string>
     <string name="updating_time">Updating Time...</string>
+    <string name="please_complete_all_fields">Please Complete All Fields!</string>
 
 </resources>

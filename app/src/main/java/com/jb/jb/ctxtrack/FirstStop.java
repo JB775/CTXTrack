@@ -3,7 +3,6 @@ package com.jb.jb.ctxtrack;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -14,8 +13,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.model.LatLng;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -40,7 +37,8 @@ public class FirstStop extends Activity {
     private EditText notesEditText;
     private TextView userIdStop1;
     private String intentUserId;
-    private TextView mainTextView;
+    private TextView stopNumber;
+    private TextView userId;
 
     //make JSONParser private???
     JSONParser jsonParser = new JSONParser();
@@ -53,12 +51,12 @@ public class FirstStop extends Activity {
     public static final String TAG = FirstStop.class.getSimpleName();
     private LocationProvider mLocationProvider;
 
+    int arrivedClick = 0;
+
 
     private String intentTrailerNumber;
     private String intentTruckNumber;
     private String intentNewTrailerNumber;
-
-    private String newTrailerNumber;
     private String dispatchNotes;
 
     private static final String TAG_SUCCESS = "success";
@@ -67,7 +65,8 @@ public class FirstStop extends Activity {
     //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/.php";
     //private static String url_create_product = "http://localhost/ctxtrack/.php";
     //delran
-    private static String url_create_product = "http://192.168.56.101/ctxtrack/.php";
+    private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main2.php";
+    private static String url_create_product2 = "";
     //home
     //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/first_stop.php";
 
@@ -85,7 +84,8 @@ public class FirstStop extends Activity {
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         notesEditText = (EditText) findViewById(R.id.notes);
         userIdStop1 = (TextView) findViewById(R.id.userIdStop1);
-        mainTextView = (TextView) findViewById(R.id.stop6);
+        stopNumber = (TextView) findViewById(R.id.stop1);
+        userId = (TextView) findViewById(R.id.userIdStop1);
 
         Intent intent = getIntent();{
             a = intent.getStringExtra("intentTruckNumber");
@@ -106,6 +106,8 @@ public class FirstStop extends Activity {
 
                 Toast.makeText(getApplicationContext(), now.toString(), Toast.LENGTH_LONG).show();
                 checkBox.setChecked(true);
+                arrivedClick = 1;
+                new InfoBegin2().execute();
 
 
             }
@@ -118,21 +120,23 @@ public class FirstStop extends Activity {
 
                 Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(FirstStop.this, SecondStop.class);
-                intentTruckNumber = truckTextview.getText().toString();
-                intentTrailerNumber = trailerTextview.getText().toString();
-                //use trim();????
-                intentNewTrailerNumber = enteredTrailer.getText().toString();
-                intentUserId = userIdStop1.getText().toString();
+                new InfoBegin2().execute();
 
-                //EditText editText = (EditText) findViewById(R.id.edit_message);
-                //String message = enteredTrailer.getText().toString();
-
-                intent.putExtra("intentTrailerNumber", intentTrailerNumber);
-                intent.putExtra("intentTruckNumber", intentTruckNumber);
-                intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
-                intent.putExtra("intentUserId", intentUserId);
-                startActivity(intent);
+//                Intent intent = new Intent(FirstStop.this, SecondStop.class);
+//                intentTruckNumber = truckTextview.getText().toString();
+//                intentTrailerNumber = trailerTextview.getText().toString();
+//                //use trim();????
+//                intentNewTrailerNumber = enteredTrailer.getText().toString();
+//                intentUserId = userIdStop1.getText().toString();
+//
+//                //EditText editText = (EditText) findViewById(R.id.edit_message);
+//                //String message = enteredTrailer.getText().toString();
+//
+//                intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+//                intent.putExtra("intentTruckNumber", intentTruckNumber);
+//                intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
+//                intent.putExtra("intentUserId", intentUserId);
+//                startActivity(intent);
             }
         });
 
@@ -146,7 +150,7 @@ public class FirstStop extends Activity {
 //
 //    }
 
-    class InfoBegin extends AsyncTask<String, String, String> {
+    class InfoBegin2 extends AsyncTask<String, String, String> {
         /**
          * Before starting background thread Show Progress Dialog
          * */
@@ -163,19 +167,40 @@ public class FirstStop extends Activity {
          * Creating product
          * */
         protected String doInBackground(String... args) {
-            String newTrailer = enteredTrailer.getText().toString();
+
             String dispatchNotes = notesEditText.getText().toString();
+            intentTruckNumber = truckTextview.getText().toString();
+            intentTrailerNumber = trailerTextview.getText().toString();
+            //use trim();????
+            intentNewTrailerNumber = enteredTrailer.getText().toString();
+            intentUserId = userIdStop1.getText().toString();
+            String userId2 = userId.getText().toString();
+            String stopNum = stopNumber.getText().toString();
 
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-            params.add(new BasicNameValuePair("newTrailer", newTrailer));
+            if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
+                params.add(new BasicNameValuePair("trailerNum", intentTrailerNumber));
+            } else {
+                params.add(new BasicNameValuePair("trailerNum", intentNewTrailerNumber));
+            }
+
+            params.add(new BasicNameValuePair("stop", stopNum));
             params.add(new BasicNameValuePair("dispatchNotes", dispatchNotes));
-            params.add(new BasicNameValuePair("intentUserId", intentUserId));
+            params.add(new BasicNameValuePair("userId2", userId2));
+
 // getting JSON Object
 // Note that create product url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_create_product,
-                    "POST", params);
+            JSONObject json;
+            if(checkBox.isChecked()) {
+                json = jsonParser.makeHttpRequest(url_create_product,
+                        "POST", params);
+            } else
+            {
+                json = jsonParser.makeHttpRequest(url_create_product2,
+                        "POST", params);
+            }
 // check log cat fro response
             Log.d("Create Response", json.toString());
 // check for success tag
@@ -190,10 +215,22 @@ public class FirstStop extends Activity {
 //                    intentTrailerNumber = trailerNumber.getText().toString();
 //                    intentUserId = userId.getText().toString();
 
-                    Intent intent = new Intent(getApplicationContext(), FirstStop.class);
-                    intent.putExtra("intentTruckNumber", intentTruckNumber);
-                    intent.putExtra("intentUserId", intentUserId);
+//                    Intent intent = new Intent(getApplicationContext(), SecondStop.class);
+//                    intent.putExtra("intentTruckNumber", intentTruckNumber);
+//                    intent.putExtra("intentUserId", intentUserId);
+//                    intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+//                    startActivity(intent);
+
+                    Intent intent = new Intent(FirstStop.this, SecondStop.class);
+
+
+                    //EditText editText = (EditText) findViewById(R.id.edit_message);
+                    //String message = enteredTrailer.getText().toString();
+
                     intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                    intent.putExtra("intentTruckNumber", intentTruckNumber);
+                    intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
+                    intent.putExtra("intentUserId", intentUserId);
                     startActivity(intent);
 // closing this screen
                     finish();
@@ -243,6 +280,7 @@ public class FirstStop extends Activity {
 //
 //
 //    }
+
 
 
 }

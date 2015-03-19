@@ -116,7 +116,13 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             @Override
             public void onClick(View view) {
                 //need to set up correct php files
-                new InfoBegin().execute();
+
+                if (truckNumber.getText().toString().trim().isEmpty() ||  trailerNumber.getText().toString().trim().isEmpty() ||  truckMiles.getText().toString().trim().isEmpty() ||  delranDeparture.getText().toString().trim().isEmpty()) {
+
+                    Toast.makeText(MainActivity.this, R.string.please_complete_all_fields , Toast.LENGTH_LONG).show();
+                } else {
+                    new InfoBegin().execute();
+                }
 
 //                intentTruckNumber = truckNumber.getText().toString();
 //                intentTrailerNumber = trailerNumber.getText().toString();
@@ -208,8 +214,9 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             String trailerNum = trailerNumber.getText().toString();
             String truckMileage = truckMiles.getText().toString();
             //String shiftBegin = truckMileage.getText().toString();
-            String delranDepartTime = delranDeparture.getText().toString();
+            String departTime = delranDeparture.getText().toString();
             String userId2 = userIdzz.getText().toString();
+            String departingDelran = "Departing Delran";
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
@@ -217,8 +224,9 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             params.add(new BasicNameValuePair("trailerNum", trailerNum));
             params.add(new BasicNameValuePair("truckMileage", truckMileage));
             //params.add(new BasicNameValuePair("starttime", shiftBegin));
-            params.add(new BasicNameValuePair("delranDepartTime", delranDepartTime));
+            params.add(new BasicNameValuePair("departTime", departTime));
             params.add(new BasicNameValuePair("userId2", userId2));
+            params.add(new BasicNameValuePair("stop", departingDelran));
 // getting JSON Object
 // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_product,
