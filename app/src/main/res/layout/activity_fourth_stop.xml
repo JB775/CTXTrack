@@ -15,7 +15,7 @@
         android:layout_marginTop="31dp"
         android:textSize="25dp"
         android:gravity="center_horizontal"
-        android:id="@+id/stop1"
+        android:id="@+id/stopNumber"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"/>
 
@@ -32,11 +32,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_upon_arrival_fourth"
-        android:id="@+id/arrivedFirstStop"
+        android:id="@+id/arrivedToStop"
         android:layout_marginTop="31dp"
         android:gravity="center"
         android:textSize="17dp"
-        android:layout_below="@+id/stop1"
+        android:layout_below="@+id/stopNumber"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -46,17 +46,18 @@
         android:id="@+id/departedFourthStop"
         android:gravity="center"
         android:textSize="17dp"
-        android:layout_toEndOf="@+id/userStop2"
-        android:layout_toRightOf="@+id/userStop2"
-        android:layout_below="@+id/notes" />
+        android:layout_toEndOf="@+id/userStop"
+        android:layout_toRightOf="@+id/userStop"
+        android:layout_below="@+id/notes"
+        android:layout_marginTop="31dp"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:layout_toLeftOf="@+id/arrivedFirstStop"
-        android:layout_alignBaseline="@+id/arrivedFirstStop"
-        android:layout_alignBottom="@+id/arrivedFirstStop"
+        android:layout_toLeftOf="@+id/arrivedToStop"
+        android:layout_alignBaseline="@+id/arrivedToStop"
+        android:layout_alignBottom="@+id/arrivedToStop"
         android:layout_centerHorizontal="true"/>
 
     <EditText
@@ -78,8 +79,8 @@
         android:textSize="17dp"
         android:layout_toEndOf="@+id/checkBox"
         android:layout_below="@+id/orTextView"
-        android:layout_alignRight="@+id/arrivedFirstStop"
-        android:layout_alignEnd="@+id/arrivedFirstStop"/>
+        android:layout_alignRight="@+id/arrivedToStop"
+        android:layout_alignEnd="@+id/arrivedToStop"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,7 +88,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/truck_number_id"
         android:id="@+id/truckNum"
-        android:layout_below="@+id/userIdStop2"
+        android:layout_below="@+id/userIdStop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"/>
@@ -131,7 +132,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/or_text"
         android:id="@+id/orTextView"
-        android:layout_below="@+id/arrivedFirstStop"
+        android:layout_below="@+id/arrivedToStop"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -150,7 +151,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/user"
-        android:id="@+id/userStop2"
+        android:id="@+id/userStop"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -161,21 +162,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="-------------"
-        android:id="@+id/userIdStop2"
-        android:layout_below="@+id/userStop2"
+        android:id="@+id/userIdStop"
+        android:layout_below="@+id/userStop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/darker_gray"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox2"
-        android:layout_toEndOf="@+id/userStop2"
-        android:layout_toStartOf="@+id/backInDelranButton"
-        android:layout_above="@+id/enterTrailerEditText"
-        android:layout_alignLeft="@+id/checkBox"
-        android:layout_alignStart="@+id/checkBox"
-        android:paddingBottom="35dp"/>
 
 </RelativeLayout>

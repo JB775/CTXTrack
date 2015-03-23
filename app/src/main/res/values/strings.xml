@@ -63,5 +63,22 @@
     <string name="title_activity_sixth_stop">SixthStop</string>
     <string name="updating_time">Updating Time...</string>
     <string name="please_complete_all_fields">Please Complete All Fields!</string>
+    <string name="arrival_time_already_submitted">Arrival Time Already Submitted!</string>
+    <string name="stop1_arrival">Stop # 1 Arrival</string>
+    <string name="stop1_departure">Stop # 1 Departure</string>
+    <string name="stop2_arrival">Stop # 2 Arrival</string>
+    <string name="stop2_departure">Stop # 2 Departure</string>
+    <string name="stop3_arrival">Stop # 3 Arrival</string>
+    <string name="stop3_departure">Stop # 3 Departure</string>
+    <string name="stop4_arrival">Stop # 4 Arrival</string>
+    <string name="stop4_departure">Stop # 4 Departure</string>
+    <string name="stop5_arrival">Stop # 5 Arrival</string>
+    <string name="stop5_departure">Stop # 5 Departure</string>
+    <string name="stop6_arrival">Stop # 6 Arrival</string>
+    <string name="stop6_departure">Stop # 6 Departure</string>
+    <string name="arrived_back_to_delran">Arrived Back To Delran</string>
+    <string name="back_in_delran">Arrived Back To Delran!</string>
+
+
 
 </resources>

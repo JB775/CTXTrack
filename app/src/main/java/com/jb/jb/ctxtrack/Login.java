@@ -119,7 +119,7 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
                 if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
                //     if (((Button) v).getText().equals("Start")) {
                         locationrequest = LocationRequest.create();
-                        locationrequest.setInterval(100);
+                        locationrequest.setInterval(1000);
 
                         // maybe change "this" to 'activityname'.this
                         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
@@ -201,8 +201,8 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
-            String username = user.getText().toString();
-            String password = pass.getText().toString();
+            String username = user.getText().toString().trim();
+            String password = pass.getText().toString().trim();
             try {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -228,7 +228,7 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
                     edit.putString("username", username);
                     edit.commit();
 
-                    intentUserId = user.getText().toString();
+                    intentUserId = user.getText().toString().trim();
                     Intent i = new Intent(Login.this, MainActivity.class);
                     i.putExtra("intentUserId", intentUserId);
                     finish();

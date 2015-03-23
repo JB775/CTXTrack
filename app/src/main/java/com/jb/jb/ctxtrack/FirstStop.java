@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,7 +50,9 @@ public class FirstStop extends Activity {
     public static final String TAG = FirstStop.class.getSimpleName();
     private LocationProvider mLocationProvider;
 
-    int arrivedClick = 0;
+    private int arrivedClick = 0;
+    private int arrivedClickCount;
+    private int arrivedFirstClick = 0;
 
 
     private String intentTrailerNumber;
@@ -66,7 +67,7 @@ public class FirstStop extends Activity {
     //private static String url_create_product = "http://localhost/ctxtrack/.php";
     //delran
     private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main2.php";
-    private static String url_create_product2 = "";
+    private static String url_create_product2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
     //home
     //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/first_stop.php";
 
@@ -76,7 +77,10 @@ public class FirstStop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_stop);
 
-        arrivedFirstStop = (Button) findViewById(R.id.arrivedFirstStop);
+        arrivedClick = 0;
+        arrivedFirstClick = 0;
+
+        arrivedFirstStop = (Button) findViewById(R.id.arrivedToStop);
         departedFirstStop = (Button) findViewById(R.id.departedFirstStop);
         enteredTrailer = (EditText) findViewById(R.id.enterTrailerEditText);
         truckTextview = (TextView) findViewById(R.id.truckNumID);
@@ -84,10 +88,11 @@ public class FirstStop extends Activity {
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         notesEditText = (EditText) findViewById(R.id.notes);
         userIdStop1 = (TextView) findViewById(R.id.userIdStop1);
-        stopNumber = (TextView) findViewById(R.id.stop1);
+        stopNumber = (TextView) findViewById(R.id.stopNumber);
         userId = (TextView) findViewById(R.id.userIdStop1);
 
-        Intent intent = getIntent();{
+        Intent intent = getIntent();
+        {
             a = intent.getStringExtra("intentTruckNumber");
             b = intent.getStringExtra("intentTrailerNumber");
             c = intent.getStringExtra("intentUserId");
@@ -95,23 +100,33 @@ public class FirstStop extends Activity {
             trailerTextview.setText(b);
             userIdStop1.setText(c);
         }
-        if(intent != null)
 
-        arrivedFirstStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //delete this if statement???
+        if (intent != null)
 
-                Time now = new Time();
-                now.setToNow();
+            arrivedFirstStop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), now.toString(), Toast.LENGTH_LONG).show();
-                checkBox.setChecked(true);
-                arrivedClick = 1;
-                new InfoBegin2().execute();
+//                Time now = new Time();
+//                now.setToNow();
 
 
-            }
-        });
+                    checkBox.setChecked(true);
+                    arrivedClick = 1;
+                    arrivedClickCount = arrivedFirstClick++;
+
+                    if (arrivedClickCount == 0) {
+                        new InfoBegin2().execute();
+                        Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
+                    }
+                    if (arrivedClickCount >= 1) {
+                        Toast.makeText(getApplicationContext(), R.string.arrival_time_already_submitted, Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+            });
 
         departedFirstStop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +134,7 @@ public class FirstStop extends Activity {
 
 
                 Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-
+                arrivedClick = 0;
                 new InfoBegin2().execute();
 
 //                Intent intent = new Intent(FirstStop.this, SecondStop.class);
@@ -153,7 +168,7 @@ public class FirstStop extends Activity {
     class InfoBegin2 extends AsyncTask<String, String, String> {
         /**
          * Before starting background thread Show Progress Dialog
-         * */
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -163,9 +178,10 @@ public class FirstStop extends Activity {
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         /**
          * Creating product
-         * */
+         */
         protected String doInBackground(String... args) {
 
             String dispatchNotes = notesEditText.getText().toString();
@@ -175,7 +191,9 @@ public class FirstStop extends Activity {
             intentNewTrailerNumber = enteredTrailer.getText().toString();
             intentUserId = userIdStop1.getText().toString();
             String userId2 = userId.getText().toString();
-            String stopNum = stopNumber.getText().toString();
+            //String stopNumArrival = stopNumber.getText().toString();
+            String stopNumArrival = getResources().getString(R.string.stop1_arrival);
+            String stopNumDeparture = getResources().getString(R.string.stop1_departure);
 
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -185,19 +203,23 @@ public class FirstStop extends Activity {
             } else {
                 params.add(new BasicNameValuePair("trailerNum", intentNewTrailerNumber));
             }
+            if (arrivedClick == 1) {
+                params.add(new BasicNameValuePair("stop", stopNumArrival));
+            } else {
+                params.add(new BasicNameValuePair("stop", stopNumDeparture));
+            }
 
-            params.add(new BasicNameValuePair("stop", stopNum));
             params.add(new BasicNameValuePair("dispatchNotes", dispatchNotes));
             params.add(new BasicNameValuePair("userId2", userId2));
 
 // getting JSON Object
 // Note that create product url accepts POST method
             JSONObject json;
-            if(checkBox.isChecked()) {
+            //   if(checkBox.isChecked()) {
+            if (arrivedClick == 1) {
                 json = jsonParser.makeHttpRequest(url_create_product,
                         "POST", params);
-            } else
-            {
+            } else {
                 json = jsonParser.makeHttpRequest(url_create_product2,
                         "POST", params);
             }
@@ -220,20 +242,23 @@ public class FirstStop extends Activity {
 //                    intent.putExtra("intentUserId", intentUserId);
 //                    intent.putExtra("intentTrailerNumber", intentTrailerNumber);
 //                    startActivity(intent);
+                    if (arrivedClick == 0) {
+                        Intent intent = new Intent(FirstStop.this, SecondStop.class);
 
-                    Intent intent = new Intent(FirstStop.this, SecondStop.class);
 
+                        //EditText editText = (EditText) findViewById(R.id.edit_message);
+                        //String message = enteredTrailer.getText().toString();
 
-                    //EditText editText = (EditText) findViewById(R.id.edit_message);
-                    //String message = enteredTrailer.getText().toString();
+                        intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                        intent.putExtra("intentTruckNumber", intentTruckNumber);
+                        intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
+                        intent.putExtra("intentUserId", intentUserId);
 
-                    intent.putExtra("intentTrailerNumber", intentTrailerNumber);
-                    intent.putExtra("intentTruckNumber", intentTruckNumber);
-                    intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
-                    intent.putExtra("intentUserId", intentUserId);
-                    startActivity(intent);
+                        startActivity(intent);
+
 // closing this screen
-                    finish();
+                        finish();
+                    }
                 } else {
 // failed to create product
                 }
@@ -242,15 +267,18 @@ public class FirstStop extends Activity {
             }
             return null;
         }
+
         /**
          * After completing background task Dismiss the progress dialog
-         * **/
+         * *
+         */
         protected void onPostExecute(String file_url) {
 // dismiss the dialog once done
             pDialog.dismiss();
         }
     }
 
+}
 
 
 
@@ -283,4 +311,4 @@ public class FirstStop extends Activity {
 
 
 
-}
+
