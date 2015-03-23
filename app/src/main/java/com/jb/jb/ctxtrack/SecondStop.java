@@ -24,10 +24,8 @@ import java.util.List;
 public class SecondStop extends Activity {
 
 
-
-    //private EditText enteredTrailer;
-    private TextView stopNumber;
-    private TextView userId;
+    //private TextView stopNumber;
+    //private TextView userId;
 
     private Button backInDelranButton;
     private Button arrivedSecondStopButton;
@@ -52,29 +50,24 @@ public class SecondStop extends Activity {
 
 
     //GPS Variables
-    public static final String TAG = FirstStop.class.getSimpleName();
-    private LocationProvider mLocationProvider;
+    //public static final String TAG = FirstStop.class.getSimpleName();
+    //private LocationProvider mLocationProvider;
 
     private int arrivedClick = 0;
     private int arrivedClickCount;
     private int arrivedFirstClick = 0;
+    private int arrivedWasClicked = 0;
 
 
     private String intentTrailerNumber;
     private String intentTruckNumber;
     private String intentNewTrailerNumber;
-    private String dispatchNotes;
+    //private String dispatchNotes;
 
     private static final String TAG_SUCCESS = "success";
 
-    //edit this to correct server address and update to correct php file
-    //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/.php";
-    //private static String url_create_product = "http://localhost/ctxtrack/.php";
-    //delran
-    private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main2.php";
-    private static String url_create_product2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
-    //home
-    //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/first_stop.php";
+    private static String server_url = "http://www.jabdata.com/ctxtrack/activity_main2.php";
+    private static String server_url_2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
 
 
     @Override
@@ -84,14 +77,7 @@ public class SecondStop extends Activity {
 
         arrivedClick = 0;
         arrivedFirstClick = 0;
-        //enteredTrailer = (EditText) findViewById(R.id.enterTrailerEditText);
-        //truckTextview = (TextView) findViewById(R.id.truckNumID);
-        //trailerTextview = (TextView) findViewById(R.id.trailerNumID);
-        //checkBox = (CheckBox) findViewById(R.id.checkBox);
-        //notesEditText = (EditText) findViewById(R.id.notes);
-        //userIdStop1 = (TextView) findViewById(R.id.userIdStop1);
-        //stopNumber = (TextView) findViewById(R.id.stop1);
-        //userId = (TextView) findViewById(R.id.userIdStop1);
+        arrivedWasClicked = 0;
 
 
         backInDelranButton = (Button) findViewById(R.id.backInDelranButton);
@@ -101,9 +87,7 @@ public class SecondStop extends Activity {
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
-        //checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
         notesEditText = (EditText) findViewById(R.id.notes);
-        //userId = (TextView) findViewById(R.id.userIdStop2);
         userIdSecondStop = (TextView) findViewById(R.id.userIdStop2);
 
         Intent intent = getIntent();
@@ -116,19 +100,13 @@ public class SecondStop extends Activity {
             userIdSecondStop.setText(c);
         }
 
-        //delete this if statement???
-        if (intent != null)
-
             arrivedSecondStopButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-//                Time now = new Time();
-//                now.setToNow();
-
-
                     checkBox.setChecked(true);
                     arrivedClick = 1;
+                    arrivedWasClicked = 1;
                     arrivedClickCount = arrivedFirstClick++;
 
                     if (arrivedClickCount == 0) {
@@ -138,8 +116,6 @@ public class SecondStop extends Activity {
                     if (arrivedClickCount >= 1) {
                         Toast.makeText(getApplicationContext(), R.string.arrival_time_already_submitted, Toast.LENGTH_LONG).show();
                     }
-
-
                 }
             });
 
@@ -147,55 +123,37 @@ public class SecondStop extends Activity {
             @Override
             public void onClick(View v) {
 
+                arrivedSecondStopButton.setEnabled(false);
 
-                Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                arrivedClick = 0;
-                new InfoBegin2().execute();
-
-//                Intent intent = new Intent(FirstStop.this, SecondStop.class);
-//                intentTruckNumber = truckTextview.getText().toString();
-//                intentTrailerNumber = trailerTextview.getText().toString();
-//                //use trim();????
-//                intentNewTrailerNumber = enteredTrailer.getText().toString();
-//                intentUserId = userIdStop1.getText().toString();
-//
-//                //EditText editText = (EditText) findViewById(R.id.edit_message);
-//                //String message = enteredTrailer.getText().toString();
-//
-//                intent.putExtra("intentTrailerNumber", intentTrailerNumber);
-//                intent.putExtra("intentTruckNumber", intentTruckNumber);
-//                intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
-//                intent.putExtra("intentUserId", intentUserId);
-//                startActivity(intent);
+                if (arrivedWasClicked == 0 && notesEditText.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), R.string.enter_arrival_time_into_notes, Toast.LENGTH_LONG).show();
+                } else {
+                    arrivedClick = 0;
+                    if (arrivedWasClicked == 1){
+                        Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
+                        new InfoBegin2().execute();
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
+                        new InfoBegin2().execute();
+                    }
+                }
             }
         });
-
-        //startService(new Intent(this, AndroidLocationService.class));
 
         backInDelranButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Toast.makeText(getApplicationContext(), R.string.back_in_delran, Toast.LENGTH_LONG).show();
                 arrivedClick = 2;
                 new InfoBegin2().execute();
-
-
             }
         });
-
-
     }
 
-//    @Override
-//    public void handleNewLocation(Location location) {
-//
-//    }
-
     class InfoBegin2 extends AsyncTask<String, String, String> {
-        /**
-         * Before starting background thread Show Progress Dialog
-         */
+
+         // Showing Progress Dialog
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -206,25 +164,19 @@ public class SecondStop extends Activity {
             pDialog.show();
         }
 
-        /**
-         * Creating product
-         */
         protected String doInBackground(String... args) {
 
             String dispatchNotes = notesEditText.getText().toString();
             intentTruckNumber = truckTextview.getText().toString();
             intentTrailerNumber = trailerTextview.getText().toString();
-            //use trim();????
             intentNewTrailerNumber = enterTrailerEditText.getText().toString();
-                    //enteredTrailer.getText().toString();
             intentUserId = userIdSecondStop.getText().toString();
             String userId2 = userIdSecondStop.getText().toString();
-            //String stopNumArrival = stopNumber.getText().toString();
             String stopNumArrival = getResources().getString(R.string.stop2_arrival);
             String stopNumDeparture = getResources().getString(R.string.stop2_departure);
             String backToDelran = getResources().getString(R.string.arrived_back_to_delran);
 
-// Building Parameters
+            // Building Parameters ArrayList
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
             if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
@@ -243,42 +195,25 @@ public class SecondStop extends Activity {
             params.add(new BasicNameValuePair("dispatchNotes", dispatchNotes));
             params.add(new BasicNameValuePair("userId2", userId2));
 
-// getting JSON Object
-// Note that create product url accepts POST method
+            // getting JSON Object - POST Method
             JSONObject json;
-            //   if(checkBox.isChecked()) {
             if (arrivedClick == 1) {
-                json = jsonParser.makeHttpRequest(url_create_product,
+                json = jsonParser.makeHttpRequest(server_url,
                         "POST", params);
             } else {
-                json = jsonParser.makeHttpRequest(url_create_product2,
+                //same URL right now but may break apart into multiple databases
+                json = jsonParser.makeHttpRequest(server_url_2,
                         "POST", params);
             }
-// check log cat fro response
+            // checking log cat for response
             Log.d("Create Response", json.toString());
-// check for success tag
+            // checking for success tag
             try {
                 int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
-// successfully created product
-                    //Intent i = new Intent(getApplicationContext(), FirstStop.class);
-                    //startActivity(i);
 
-//                    intentTruckNumber = truckNumber.getText().toString();
-//                    intentTrailerNumber = trailerNumber.getText().toString();
-//                    intentUserId = userId.getText().toString();
-
-//                    Intent intent = new Intent(getApplicationContext(), SecondStop.class);
-//                    intent.putExtra("intentTruckNumber", intentTruckNumber);
-//                    intent.putExtra("intentUserId", intentUserId);
-//                    intent.putExtra("intentTrailerNumber", intentTrailerNumber);
-//                    startActivity(intent);
                     if (arrivedClick == 0) {
                         Intent intent = new Intent(SecondStop.this, ThirdStop.class);
-
-
-                        //EditText editText = (EditText) findViewById(R.id.edit_message);
-                        //String message = enteredTrailer.getText().toString();
 
                         intent.putExtra("intentTrailerNumber", intentTrailerNumber);
                         intent.putExtra("intentTruckNumber", intentTruckNumber);
@@ -287,28 +222,15 @@ public class SecondStop extends Activity {
 
                         startActivity(intent);
 
-// closing this screen
+                    // closing screen
                         finish();
                     } else if (arrivedClick == 2) {
-                        Intent intent = new Intent(SecondStop.this, MainActivity.class);
 
-
-                        //EditText editText = (EditText) findViewById(R.id.edit_message);
-                        //String message = enteredTrailer.getText().toString();
-
-
-                        //CREATE NEW ACTIVITY?????????
-
-                        //intent.putExtra("intentTrailerNumber", intentTrailerNumber);
-                        //intent.putExtra("intentTruckNumber", intentTruckNumber);
-                        //intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
-                        //intent.putExtra("intentUserId", intentUserId);
-
+                        Intent intent = new Intent(SecondStop.this, BackInDelran.class);
                         startActivity(intent);
-
                     }
                 } else {
-// failed to create product
+                    // failed
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -316,14 +238,10 @@ public class SecondStop extends Activity {
             return null;
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * *
-         */
+                    // After complete background task, dismiss progress dialog
         protected void onPostExecute(String file_url) {
-// dismiss the dialog once done
+                    // dismiss the dialog upon completion
             pDialog.dismiss();
         }
     }
-
 }

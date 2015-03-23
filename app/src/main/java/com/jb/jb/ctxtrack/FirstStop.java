@@ -53,6 +53,7 @@ public class FirstStop extends Activity {
     private int arrivedClick = 0;
     private int arrivedClickCount;
     private int arrivedFirstClick = 0;
+    private int arrivedWasClicked = 0;
 
 
     private String intentTrailerNumber;
@@ -77,8 +78,10 @@ public class FirstStop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_stop);
 
+        //do I even need arrivedClick??
         arrivedClick = 0;
         arrivedFirstClick = 0;
+        arrivedWasClicked = 0;
 
         arrivedFirstStop = (Button) findViewById(R.id.arrivedToStop);
         departedFirstStop = (Button) findViewById(R.id.departedFirstStop);
@@ -114,6 +117,7 @@ public class FirstStop extends Activity {
 
                     checkBox.setChecked(true);
                     arrivedClick = 1;
+                    arrivedWasClicked = 1;
                     arrivedClickCount = arrivedFirstClick++;
 
                     if (arrivedClickCount == 0) {
@@ -133,9 +137,21 @@ public class FirstStop extends Activity {
             public void onClick(View v) {
 
 
-                Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                arrivedClick = 0;
-                new InfoBegin2().execute();
+
+                arrivedFirstStop.setEnabled(false);
+
+                if (arrivedWasClicked == 0 && notesEditText.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), R.string.enter_arrival_time_into_notes, Toast.LENGTH_LONG).show();
+                } else {
+                    arrivedClick = 0;
+                    if (arrivedWasClicked == 1){
+                        Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
+                        new InfoBegin2().execute();
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
+                        new InfoBegin2().execute();
+                    }
+                }
 
 //                Intent intent = new Intent(FirstStop.this, SecondStop.class);
 //                intentTruckNumber = truckTextview.getText().toString();
