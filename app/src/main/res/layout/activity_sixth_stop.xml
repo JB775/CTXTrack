@@ -89,7 +89,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/truck_number_id"
         android:id="@+id/truckNum"
-        android:layout_below="@+id/userIdStop"
+        android:layout_below="@+id/userIdStop6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"/>
@@ -163,7 +163,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="-------------"
-        android:id="@+id/userIdStop"
+        android:id="@+id/userIdStop6"
         android:layout_below="@+id/userStop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

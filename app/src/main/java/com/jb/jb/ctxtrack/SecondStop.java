@@ -43,7 +43,7 @@ public class SecondStop extends Activity {
     private String intentUserId;
 
     //make JSONParser private???
-    JSONParser jsonParser = new JSONParser();
+    private JSONParser jsonParser = new JSONParser();
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -215,7 +215,11 @@ public class SecondStop extends Activity {
                     if (arrivedClick == 0) {
                         Intent intent = new Intent(SecondStop.this, ThirdStop.class);
 
-                        intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                        if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
+                            intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                        } else {
+                            intent.putExtra("intentTrailerNumber", intentNewTrailerNumber);
+                        }
                         intent.putExtra("intentTruckNumber", intentTruckNumber);
                         intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
                         intent.putExtra("intentUserId", intentUserId);

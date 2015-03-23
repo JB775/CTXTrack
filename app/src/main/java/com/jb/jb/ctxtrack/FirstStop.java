@@ -265,7 +265,11 @@ public class FirstStop extends Activity {
                         //EditText editText = (EditText) findViewById(R.id.edit_message);
                         //String message = enteredTrailer.getText().toString();
 
-                        intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                        if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
+                            intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                        } else {
+                            intent.putExtra("intentTrailerNumber", intentNewTrailerNumber);
+                        }
                         intent.putExtra("intentTruckNumber", intentTruckNumber);
                         intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
                         intent.putExtra("intentUserId", intentUserId);

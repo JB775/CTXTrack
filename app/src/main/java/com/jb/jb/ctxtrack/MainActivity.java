@@ -216,7 +216,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             //String shiftBegin = truckMileage.getText().toString();
             String departTime = delranDeparture.getText().toString();
             String userId2 = userIdzz.getText().toString();
-            String departingDelran = "Departing Delran";
+            String departingDelran = getResources().getString(R.string.departing_delran);
 // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
