@@ -256,5 +256,11 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+
+
+    }
 
 }

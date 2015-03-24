@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -91,7 +92,9 @@ public class BackInDelran extends Activity {
             public void onClick(View view) {
                 //add logout button code here
                 arrivedClick = 0;
-                //add a Toast here
+                Toast.makeText(getApplicationContext(), R.string.logged_out, Toast.LENGTH_LONG).show();
+                //  if (mGoogleApiClient != null)
+                //     mGoogleApiClient.disconnect();
                 new InfoBegin2().execute();
             }
         });
@@ -101,7 +104,8 @@ public class BackInDelran extends Activity {
             public void onClick(View view) {
                 //add continue to next stop button code here
                 arrivedClick = 1;
-                //add a Toast here
+                Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
+
                 new InfoBegin2().execute();
             }
         });
@@ -213,5 +217,12 @@ public class BackInDelran extends Activity {
             // dismiss the dialog upon completion
             pDialog.dismiss();
         }
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+
+
     }
 }

@@ -51,7 +51,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/submit_button"
+        android:text="@string/click_when_departing_delran"
         android:id="@+id/submit_button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

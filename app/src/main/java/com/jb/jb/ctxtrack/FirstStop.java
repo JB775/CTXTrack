@@ -298,6 +298,13 @@ public class FirstStop extends Activity {
         }
     }
 
+    @Override
+    public void onBackPressed()
+    {
+
+
+    }
+
 }
 
 

@@ -268,4 +268,11 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
            pDialog.dismiss();
         }
     }
+
+    @Override
+    public void onBackPressed()
+    {
+
+
+    }
 }

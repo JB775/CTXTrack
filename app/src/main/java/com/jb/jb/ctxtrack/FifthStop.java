@@ -103,6 +103,7 @@ public class FifthStop extends Activity {
             @Override
             public void onClick(View v) {
 
+                backInDelranButton.setEnabled(false);
                 checkBox.setChecked(true);
                 arrivedClick = 1;
                 arrivedWasClicked = 1;
@@ -220,7 +221,6 @@ public class FifthStop extends Activity {
                             intent.putExtra("intentTrailerNumber", intentNewTrailerNumber);
                         }
                         intent.putExtra("intentTruckNumber", intentTruckNumber);
-                      //  intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
                         intent.putExtra("intentUserId", intentUserId);
 
                         startActivity(intent);
@@ -230,6 +230,13 @@ public class FifthStop extends Activity {
                     } else if (arrivedClick == 2) {
 
                         Intent intent = new Intent(FifthStop.this, BackInDelran.class);
+                        if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
+                            intent.putExtra("intentTrailerNumber", intentTrailerNumber);
+                        } else {
+                            intent.putExtra("intentTrailerNumber", intentNewTrailerNumber);
+                        }
+                        intent.putExtra("intentTruckNumber", intentTruckNumber);
+                        intent.putExtra("intentUserId", intentUserId);
                         startActivity(intent);
                     }
                 } else {
@@ -246,5 +253,12 @@ public class FifthStop extends Activity {
             // dismiss the dialog upon completion
             pDialog.dismiss();
         }
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+
+
     }
 }
