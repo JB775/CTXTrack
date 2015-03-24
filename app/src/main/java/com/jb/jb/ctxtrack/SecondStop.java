@@ -221,7 +221,7 @@ public class SecondStop extends Activity {
                             intent.putExtra("intentTrailerNumber", intentNewTrailerNumber);
                         }
                         intent.putExtra("intentTruckNumber", intentTruckNumber);
-                        intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
+                       // intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
                         intent.putExtra("intentUserId", intentUserId);
 
                         startActivity(intent);

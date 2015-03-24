@@ -11,20 +11,12 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/truck_number_editText"
-        android:hint="@string/insert_truck_number"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/trailer_editText"
 
         android:hint="@string/insert_trailer_number"
-        android:layout_below="@+id/truck_number_editText"
-        android:layout_alignRight="@+id/truck_number_editText"
-        android:layout_alignEnd="@+id/truck_number_editText" />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/trailerNum"
+        android:layout_toEndOf="@+id/trailerNum" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -62,8 +54,7 @@
         android:id="@+id/submitAndContinue"
         android:layout_below="@+id/notesEditText"
         android:layout_toRightOf="@+id/trailerNumID"
-        android:layout_toEndOf="@+id/trailerNumID"
-        android:layout_marginTop="51dp"/>
+        android:layout_toEndOf="@+id/trailerNumID" />
 
     <TextView
         android:layout_width="wrap_content"

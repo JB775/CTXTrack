@@ -27,13 +27,14 @@ public class BackInDelran extends Activity {
 
     //make JSONParser private???
     JSONParser jsonParser = new JSONParser();
-    private String intentTruckNumber;
-    private String intentTrailerNumber;
+
     private String intentUserId;
 
     private String a;
     private String b;
     private String c;
+
+    int arrivedClick;
 
     private TextView truckTextview;
     private TextView trailerTextview;
@@ -64,7 +65,7 @@ public class BackInDelran extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_back_in_delran);
 
-
+        arrivedClick = 0;
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         userIdBackInDelran = (TextView) findViewById(R.id.userIdDelran);
@@ -89,6 +90,9 @@ public class BackInDelran extends Activity {
             @Override
             public void onClick(View view) {
                 //add logout button code here
+                arrivedClick = 0;
+                //add a Toast here
+                new InfoBegin2().execute();
             }
         });
 
@@ -96,6 +100,9 @@ public class BackInDelran extends Activity {
             @Override
             public void onClick(View view) {
                 //add continue to next stop button code here
+                arrivedClick = 1;
+                //add a Toast here
+                new InfoBegin2().execute();
             }
         });
 
@@ -129,38 +136,41 @@ public class BackInDelran extends Activity {
             String userId2 = userIdBackInDelran.getText().toString();
             String stopNumArrival = getResources().getString(R.string.stop6_arrival);
             String stopNumDeparture = getResources().getString(R.string.departing_delran);
-            String backToDelran = getResources().getString(R.string.arrived_back_to_delran);
-
+            String shiftEnded = getResources().getString(R.string.shift_ended);
+            String departingDelran = getResources().getString(R.string.departing_delran);
 
             // Building Parameters ArrayList
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-            if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
-                params.add(new BasicNameValuePair("trailerNum", intentTrailerNumber));
-            } else {
-                params.add(new BasicNameValuePair("trailerNum", intentNewTrailerNumber));
-            }
-            if (arrivedClick == 1) {
-                params.add(new BasicNameValuePair("stop", stopNumArrival));
-            } else if (arrivedClick == 0){
+
+            if (arrivedClick == 0) {
+                params.add(new BasicNameValuePair("stop", shiftEnded));
+                params.add(new BasicNameValuePair("trailerNum", ""));
+            } else if (arrivedClick == 1){
                 params.add(new BasicNameValuePair("stop", stopNumDeparture));
-            } else if (arrivedClick == 2) {
-                params.add(new BasicNameValuePair("stop", backToDelran));
+                if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
+                    params.add(new BasicNameValuePair("trailerNum", intentTrailerNumber));
+                } else {
+                    params.add(new BasicNameValuePair("trailerNum", intentNewTrailerNumber));
+                }
             }
+            //else if (arrivedClick == 2) {
+              //  params.add(new BasicNameValuePair("stop", backToDelran));
+            //}
 
             params.add(new BasicNameValuePair("dispatchNotes", dispatchNotes));
             params.add(new BasicNameValuePair("userId2", userId2));
 
             // getting JSON Object - POST Method
             JSONObject json;
-            if (arrivedClick == 1) {
-                json = jsonParser.makeHttpRequest(server_url,
-                        "POST", params);
-            } else {
+           // if (arrivedClick == 0) {
+            //    json = jsonParser.makeHttpRequest(server_url,
+           //             "POST", params);
+           // } else {
                 //same URL right now but may break apart into multiple databases
                 json = jsonParser.makeHttpRequest(server_url_2,
                         "POST", params);
-            }
+           // }
             // checking log cat for response
             Log.d("Create Response", json.toString());
             // checking for success tag
@@ -168,7 +178,7 @@ public class BackInDelran extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
 
-                    if (arrivedClick == 0) {
+                    if (arrivedClick == 1) {
                         Intent intent = new Intent(BackInDelran.this, FirstStop.class);
 
                         if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
@@ -177,16 +187,16 @@ public class BackInDelran extends Activity {
                             intent.putExtra("intentTrailerNumber", intentNewTrailerNumber);
                         }
                         intent.putExtra("intentTruckNumber", intentTruckNumber);
-                        intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
+                        //intent.putExtra("intentNewTrailerNumber", intentNewTrailerNumber);
                         intent.putExtra("intentUserId", intentUserId);
 
                         startActivity(intent);
 
                         // closing screen
                         finish();
-                    } else if (arrivedClick == 2) {
+                    } else if (arrivedClick == 0) {
 
-                        Intent intent = new Intent(BackInDelran.this, FirstStop.class);
+                        Intent intent = new Intent(BackInDelran.this, Login.class);
                         startActivity(intent);
                     }
                 } else {
