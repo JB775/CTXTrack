@@ -11,8 +11,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,6 +87,7 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         // setup input fields
         user = (EditText) findViewById(R.id.username);
         pass = (EditText) findViewById(R.id.password);
+        user.requestFocus();
 
 
         // setup buttons
@@ -93,6 +97,7 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         // register listeners
         mSubmit.setOnClickListener(this);
         mRegister.setOnClickListener(this);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
         mIntentService = new Intent(this, LocationService.class);
         mPendingIntent = PendingIntent.getService(this, 1, mIntentService, 0);
@@ -108,6 +113,22 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         } else {
             Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
         }
+
+//        relative = (RelativeLayout) rootView.findViewById(R.id.relative_layout);
+//        relative.setOnClickListener(this);
+//
+//        public void onClick(View v) {
+//            switch (v.getId()) {
+//                case R.id.btn_send:
+//                    sendStory();
+//                    break;
+//                case R.id.the_edit_text:
+//                    break;
+//                default:
+//                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//                    inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+//            }
+//        }
 
     }
 

@@ -15,8 +15,7 @@
 
         android:hint="@string/insert_trailer_number"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/trailerNum"
-        android:layout_toEndOf="@+id/trailerNum" />
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -42,10 +41,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/or_text"
         android:id="@+id/textView"
+        android:textColor="@android:color/black"
         android:layout_below="@+id/endShiftButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
-        android:textColor="@android:color/black"/>
+        android:layout_marginTop="31dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -54,7 +53,8 @@
         android:id="@+id/submitAndContinue"
         android:layout_below="@+id/notesEditText"
         android:layout_toRightOf="@+id/trailerNumID"
-        android:layout_toEndOf="@+id/trailerNumID" />
+        android:layout_toEndOf="@+id/trailerNumID"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -126,12 +126,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notesEditText"
-        android:layout_below="@+id/trailer_editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/add_notes_for_dispatchers_here"
-        android:gravity="center_vertical|center_horizontal"/>
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_below="@+id/trailer_editText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

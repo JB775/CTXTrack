@@ -2,30 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@android:style/Theme.NoTitleBar"
-    tools:context="com.jb.jb.ctxtrack.Register">
+    tools:context="com.jb.jb.ctxtrack.Register"
+    android:clickable="true">
 
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ctx2"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"/>
 
     <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_below="@+id/ctxBanner"
         android:layout_alignLeft="@+id/password"
-        android:layout_centerVertical="true"
-        android:text="Username" />
+        android:layout_alignStart="@+id/password"
+        android:layout_marginTop="60dp" />
 
     <EditText
         android:id="@+id/username"
@@ -33,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/usernameTextView"
         android:layout_below="@+id/usernameTextView"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="@string/create_new_user" />
 
     <TextView
         android:id="@+id/passwordTextView"
@@ -62,7 +54,8 @@
         android:layout_below="@+id/passwordTextView"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:hint="@string/create_new_password" />
 
     <Button
         android:id="@+id/register"
@@ -70,6 +63,18 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/password"
         android:layout_below="@+id/password"
-        android:text="Register" />
+        android:text="Register"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password" />
+
+    <ImageView
+        android:id="@+id/ctxBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/header"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"/>
 
 </RelativeLayout>

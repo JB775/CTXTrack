@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -57,10 +58,12 @@ public class Register extends Activity implements View.OnClickListener {
 
         user = (EditText)findViewById(R.id.username);
         pass = (EditText)findViewById(R.id.password);
+        user.requestFocus();
 
 
         mRegister = (Button)findViewById(R.id.register);
         mRegister.setOnClickListener(this);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
     }
 
