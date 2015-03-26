@@ -17,7 +17,7 @@
     <string name="insert_username">Insert Username!</string>
     <string name="password">Password:</string>
     <string name="insert_password">Insert Password!</string>
-    <string name="login">Login</string>
+    <string name="login_and_begin_shift">Login and Begin Shift</string>
     <string name="stop_1">Stop #1</string>
     <string name="click_upon_arrival_first">Click Upon Arrival to 1st Stop</string>
     <string name="click_first_departure">Click Upon Departure of 1st Stop</string>

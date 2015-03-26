@@ -12,7 +12,7 @@
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="@string/username"
         android:layout_below="@+id/ctxBanner"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/username"
         android:layout_below="@+id/username"
-        android:text="Password" />
+        android:text="@string/password" />
 
     <TextView
         android:id="@+id/textView2"

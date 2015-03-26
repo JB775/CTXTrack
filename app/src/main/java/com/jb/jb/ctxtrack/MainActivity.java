@@ -2,6 +2,7 @@ package com.jb.jb.ctxtrack;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -9,7 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -137,6 +140,14 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         });
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -212,7 +223,29 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         protected String doInBackground(String... args) {
             String truckNum = truckNumber.getText().toString();
             String trailerNum = trailerNumber.getText().toString();
-            String truckMileage = truckMiles.getText().toString();
+            String truckMileage;
+            String x = truckMiles.getText().toString().trim();
+            int z = x.length();
+            if (z >= 1 && z <= 3) {
+                truckMileage = x;
+            }
+            else if (z == 4) {
+                truckMileage = x.subSequence(0,1) + "," + x.subSequence(1,4);
+            }
+            else if (z == 5) {
+                truckMileage = x.subSequence(0,2) + "," + x.subSequence(2,5);
+            }
+            else if (z == 6) {
+                truckMileage = x.subSequence(0,3) + "," + x.subSequence(3,6);
+            }
+            else if (z >= 7) {
+                truckMileage = x.subSequence(0,1) + "," + x.subSequence(0,4) + "," + x.subSequence(4,7);
+            } else {
+                truckMileage = x;
+            }
+
+
+            //String truckMileage = truckMiles.getText().toString();
             //String shiftBegin = truckMileage.getText().toString();
             String departTime = delranDeparture.getText().toString();
             String userId2 = userIdzz.getText().toString();
