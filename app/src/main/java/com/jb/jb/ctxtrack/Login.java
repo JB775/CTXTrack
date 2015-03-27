@@ -100,8 +100,10 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         mRegister.setOnClickListener(this);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-        mIntentService = new Intent(this, LocationService.class);
-        mPendingIntent = PendingIntent.getService(this, 1, mIntentService, 0);
+        //does GPS work without the below 2??
+        //mIntentService = new Intent(this, LocationService.class);
+        //mPendingIntent = PendingIntent.getService(this, 1, mIntentService, 0);
+
         int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
 
         if (resp == ConnectionResult.SUCCESS) {
@@ -112,25 +114,9 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
                     .build();
             mGoogleApiClient.connect();
         } else {
+            //remove this Toast!!!
             Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
         }
-
-//        relative = (RelativeLayout) rootView.findViewById(R.id.relative_layout);
-//        relative.setOnClickListener(this);
-//
-//        public void onClick(View v) {
-//            switch (v.getId()) {
-//                case R.id.btn_send:
-//                    sendStory();
-//                    break;
-//                case R.id.the_edit_text:
-//                    break;
-//                default:
-//                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-//                    inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-//            }
-//        }
-
     }
 
     @Override
@@ -206,6 +192,15 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
     public void onLocationChanged(Location location) {
         if (location != null) {
             Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
+            //double asdf = location.
+            //add server send data here?  create class below and call class here??
+            //after creating class, call class in oncreate then end in onDestroy()??
+            //make it so updates are not as often
+            //is this what's actually being sent to the log thruout the app??
+            //add setInterval(interval here) ??????
+            //must create a var for LocationRequest.create(); then use setInterval on that...will this work in background?? or do I need to use pending intent?
+            //add getSpeed()???
+            //look into location.notify()
         }
     }
 
