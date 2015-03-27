@@ -148,9 +148,9 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
   //              }
 
                // if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                 //   locationrequest = LocationRequest.create();
-                 //   locationrequest.setInterval(100);
-                 //   LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, mPendingIntent);
+                    locationrequest = LocationRequest.create();
+                    locationrequest.setInterval(100);
+                    LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, mPendingIntent);
                 //}
 
                 new AttemptLogin().execute();

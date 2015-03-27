@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -24,7 +33,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondStop extends Activity {
+public class SecondStop extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
 
     //private TextView stopNumber;
@@ -44,6 +53,10 @@ public class SecondStop extends Activity {
     //private String d;
     private TextView userIdSecondStop;
     private String intentUserId;
+
+    //new GPS variables to add to all activities
+    private GoogleApiClient locationclient;
+    private LocationRequest locationrequest;
 
     //make JSONParser private???
     private JSONParser jsonParser = new JSONParser();
@@ -77,6 +90,20 @@ public class SecondStop extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_stop);
+
+        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if(resp == ConnectionResult.SUCCESS){
+            locationclient =      new GoogleApiClient.Builder(SecondStop.this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) this)
+                    .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) this)
+                    .build();
+
+            locationclient.connect();
+        }
+        else{
+            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
+        }
 
         arrivedClick = 0;
         arrivedFirstClick = 0;
@@ -152,6 +179,21 @@ public class SecondStop extends Activity {
                 new InfoBegin2().execute();
             }
         });
+
+        if(locationclient!=null && locationclient.isConnected()){
+
+                locationrequest = LocationRequest.create();
+
+                //this was a variable edittext in other project, just set to 100
+                locationrequest.setInterval(Long.parseLong("100"));
+
+
+            LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
+            //locationclient.requestLocationUpdates(locationrequest, this);
+            //locationclient.removeLocationUpdates(this); googapi, locationrequest, locationlistener
+
+        }
+
     }
 
     @Override
@@ -160,6 +202,31 @@ public class SecondStop extends Activity {
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onDisconnected() {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
     }
 
     class InfoBegin2 extends AsyncTask<String, String, String> {
