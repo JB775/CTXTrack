@@ -46,10 +46,11 @@
         android:id="@+id/departedThirdStop"
         android:gravity="center"
         android:textSize="17dp"
-        android:layout_toEndOf="@+id/userStop"
+        android:layout_toEndOf="@+id/notes"
         android:layout_toRightOf="@+id/userStop"
         android:layout_below="@+id/notes"
-        android:layout_marginTop="31dp"/>
+        android:layout_marginTop="31dp"
+        android:layout_centerInParent="true"/>
 
     <CheckBox
         android:layout_width="wrap_content"

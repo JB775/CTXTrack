@@ -57,17 +57,14 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
     //new GPS variables to add to all activities
     private GoogleApiClient locationclient;
     private LocationRequest locationrequest;
+    private double lat;
+    private double long3;
+    public static final String TAG = SecondStop.class.getSimpleName();
 
-    //make JSONParser private???
     private JSONParser jsonParser = new JSONParser();
 
     // Progress Dialog
     private ProgressDialog pDialog;
-
-
-    //GPS Variables
-    //public static final String TAG = FirstStop.class.getSimpleName();
-    //private LocationProvider mLocationProvider;
 
     private int arrivedClick = 0;
     private int arrivedClickCount;
@@ -84,6 +81,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
 
     private static String server_url = "http://www.jabdata.com/ctxtrack/activity_main2.php";
     private static String server_url_2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
+    private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
 
 
     @Override
@@ -95,8 +93,8 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
         if(resp == ConnectionResult.SUCCESS){
             locationclient =      new GoogleApiClient.Builder(SecondStop.this)
                     .addApi(LocationServices.API)
-                    .addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) this)
-                    .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
                     .build();
 
             locationclient.connect();
@@ -179,22 +177,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
                 new InfoBegin2().execute();
             }
         });
-
-        if(locationclient!=null && locationclient.isConnected()){
-
-                locationrequest = LocationRequest.create();
-
-                //this was a variable edittext in other project, just set to 100
-                locationrequest.setInterval(Long.parseLong("100"));
-
-
-            LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
-            //locationclient.requestLocationUpdates(locationrequest, this);
-            //locationclient.removeLocationUpdates(this); googapi, locationrequest, locationlistener
-
-        }
-
-    }
+     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -205,8 +188,27 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
     }
 
     @Override
-    public void onConnected(Bundle bundle) {
+    protected void onDestroy() {
+       super.onDestroy();
+        if (locationclient != null)
+            locationclient.disconnect();
+    }
 
+    @Override
+    public void onConnected(Bundle bundle) {
+        Log.i(TAG, "onConnected");
+        if(locationclient!=null && locationclient.isConnected()){
+
+            locationrequest = LocationRequest.create();
+
+            //this was a variable edittext in other project, here it's just set to 100
+            locationrequest.setInterval(60*1000);
+
+            //is this being sent to TAG???
+            LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
+            //locationclient.requestLocationUpdates(locationrequest, this);
+            //locationclient.removeLocationUpdates(this); googapi, locationrequest, locationlistener
+        }
     }
 
     @Override
@@ -221,6 +223,13 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
 
     @Override
     public void onLocationChanged(Location location) {
+        if (location != null) {
+            lat = location.getLatitude();
+            long3 = location.getLongitude();
+
+            Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
+        }
+        new InfoBegin3().execute();
 
     }
 
@@ -332,6 +341,56 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
         protected void onPostExecute(String file_url) {
                     // dismiss the dialog upon completion
             pDialog.dismiss();
+        }
+    }
+
+    class InfoBegin3 extends AsyncTask<String, String, String> {
+
+         protected String doInBackground(String... args) {
+
+            String userId2 = userIdSecondStop.getText().toString();
+            String stopNumArrival = getResources().getString(R.string.stop2_arrival);
+            String inTransit = getResources().getString(R.string.in_transit);
+            String backToDelran = getResources().getString(R.string.arrived_back_to_delran);
+            String lat2 = String.valueOf(lat);
+            String long2 = String.valueOf(long3);
+
+            // Building Parameters ArrayList
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+                params.add(new BasicNameValuePair("latitude", lat2));
+                params.add(new BasicNameValuePair("longitude", long2));
+                //params.add(new BasicNameValuePair("stop", "LOCATION"));
+             if (arrivedClick == 0) {
+                 params.add(new BasicNameValuePair("stop", inTransit));
+             } else if (arrivedClick == 1){
+                 params.add(new BasicNameValuePair("stop", stopNumArrival));
+             } else if (arrivedClick == 2) {
+                 params.add(new BasicNameValuePair("stop", backToDelran));
+             }
+                params.add(new BasicNameValuePair("latLong", lat2+","+long2));
+                params.add(new BasicNameValuePair("userId2", userId2));
+
+            // getting JSON Object - POST Method
+            JSONObject json;
+
+                json = jsonParser.makeHttpRequest(server_location,
+                        "POST", params);
+
+            // checking log cat for response
+            Log.d("Create Response", json.toString());
+            // checking for success tag
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+
+                } else {
+                    // failed
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 

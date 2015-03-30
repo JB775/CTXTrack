@@ -78,6 +78,7 @@
     <string name="stop6_departure">Stop # 6 Departure</string>
     <string name="arrived_back_to_delran">Arrived Back To Delran</string>
     <string name="back_in_delran">Arrived Back To Delran!</string>
+    <string name="still_in_delran">Still in Delran</string>
     <string name="enter_arrival_time_into_notes">Please Enter Arrival Time In Notes!!</string>
     <string name="next_time_arrival">Next Time Please Click Arrival Button Upon Arrival!</string>
     <string name="departing_delran">Departing Delran</string>
@@ -86,6 +87,7 @@
     <string name="logged_out">Logged Out!</string>
     <string name="create_new_user">Create Username!</string>
     <string name="create_new_password">Create Password!</string>
+    <string name="in_transit">In Transit to Next Stop</string>
 
 
 

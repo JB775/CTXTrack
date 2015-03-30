@@ -40,8 +40,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     // Progress Dialog
     private ProgressDialog pDialog;
 
-    //make JSONParser private???
-    JSONParser jsonParser = new JSONParser();
+    private JSONParser jsonParser = new JSONParser();
     private String intentTruckNumber;
     private String intentTrailerNumber;
     private String intentUserId;
@@ -55,30 +54,45 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     private Button submitAndGo;
     private TextView userIdzz;
 
-    //added 3/17
-    private GoogleApiClient mGoogleApiClient;
+    //private String TAG = this.getClass().getSimpleName();
+
+    //GPS Variables
+    private GoogleApiClient locationclient;
     private LocationRequest locationrequest;
-    private String TAG = this.getClass().getSimpleName();
+    private double lat;
+    private double long3;
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     //edit this to correct server address
     //private static String url_create_product = "http://192.168.0.6:1337/ctxtrack/create_product.php";
     //private static String url_create_product = "http://localhost/ctxtrack/activity_main.php";
-    //delran ip
     //private static String url_create_product = "http://192.168.56.101/ctxtrack/activity_main.php";
     //home ip
     //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
     //HostGator
     private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main.php";
-
-
+    private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
 
     private static final String TAG_SUCCESS = "success";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if(resp == ConnectionResult.SUCCESS){
+            locationclient =      new GoogleApiClient.Builder(MainActivity.this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .build();
+
+            locationclient.connect();
+        }
+        else{
+            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
+        }
 
         submitAndGo = (Button) findViewById(R.id.submit_button);
         truckNumber = (EditText) findViewById(R.id.truck_number_editText);
@@ -94,26 +108,6 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             userIdzz.setText(intentUserId);
         }
 
-
-
-        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (resp == ConnectionResult.SUCCESS) {
-            mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.this)
-                    .addApi(LocationServices.API)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .build();
-            mGoogleApiClient.connect();
-        } else {
-            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
-        }
-          if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-        locationrequest = LocationRequest.create();
-        locationrequest.setInterval(100);
-
-        // maybe change "this" to 'activityname'.this...also maybe add if statement about being connected
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
-         }
 
         submitAndGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,15 +163,20 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     }
 
     @Override
-    public void onConnected(Bundle bundle) {
-
+    protected void onDestroy() {
+        super.onDestroy();
+        if (locationclient != null)
+            locationclient.disconnect();
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mGoogleApiClient != null)
-            mGoogleApiClient.disconnect();
+    public void onConnected(Bundle bundle) {
+        if(locationclient!=null && locationclient.isConnected()){
+            locationrequest = LocationRequest.create();
+            //location update frequency
+            locationrequest.setInterval(60*1000);
+            LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
+        }
     }
 
     @Override
@@ -193,9 +192,10 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     @Override
     public void onLocationChanged(Location location) {
         if (location != null) {
-            Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
+            lat = location.getLatitude();
+            long3 = location.getLongitude();
+            new InfoBegin3().execute();
         }
-
     }
 
     @Override
@@ -299,6 +299,48 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         protected void onPostExecute(String file_url) {
 // dismiss the dialog once done
            pDialog.dismiss();
+        }
+    }
+
+    class InfoBegin3 extends AsyncTask<String, String, String> {
+
+        protected String doInBackground(String... args) {
+
+            String userId2 = userIdzz.getText().toString();
+            String backToDelran = getResources().getString(R.string.still_in_delran);
+            String lat2 = String.valueOf(lat);
+            String long2 = String.valueOf(long3);
+
+            // Building Parameters ArrayList
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            params.add(new BasicNameValuePair("latitude", lat2));
+            params.add(new BasicNameValuePair("longitude", long2));
+            //params.add(new BasicNameValuePair("stop", "LOCATION"));
+            params.add(new BasicNameValuePair("stop", backToDelran));
+            params.add(new BasicNameValuePair("latLong", lat2+","+long2));
+            params.add(new BasicNameValuePair("userId2", userId2));
+
+            // getting JSON Object - POST Method
+            JSONObject json;
+
+            json = jsonParser.makeHttpRequest(server_location,
+                    "POST", params);
+
+            // checking log cat for response
+            Log.d("Create Response", json.toString());
+            // checking for success tag
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+
+                } else {
+                    // failed
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 

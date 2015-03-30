@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,13 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -36,7 +30,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Login extends Activity implements View.OnClickListener, GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class Login extends Activity implements View.OnClickListener {
+
+        //GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private EditText user, pass;
     private Button mSubmit, mRegister;
@@ -56,7 +52,9 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
     private ProgressDialog pDialog;
 
     // JSON parser class
-    JSONParser2 jsonParser = new JSONParser2();
+    //move this to onCreate?
+     private JSONParser2 jsonParser = new JSONParser2();
+
 
     // php login script location:
 
@@ -98,25 +96,27 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         // register listeners
         mSubmit.setOnClickListener(this);
         mRegister.setOnClickListener(this);
+        //change this to always? maybe not in case device is small
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-        //does GPS work without the below 2??
+        //does GPS work without the below 2??  appears to be
         //mIntentService = new Intent(this, LocationService.class);
         //mPendingIntent = PendingIntent.getService(this, 1, mIntentService, 0);
 
-        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+//        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+//
+//        if (resp == ConnectionResult.SUCCESS) {
+//            mGoogleApiClient = new GoogleApiClient.Builder(Login.this)
+//                    .addApi(LocationServices.API)
+//                    .addConnectionCallbacks(this)
+//                    .addOnConnectionFailedListener(this)
+//                    .build();
+//            mGoogleApiClient.connect();
+//        } else {
+//            //remove this Toast!!!
+//            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
+//        }
 
-        if (resp == ConnectionResult.SUCCESS) {
-            mGoogleApiClient = new GoogleApiClient.Builder(Login.this)
-                    .addApi(LocationServices.API)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .build();
-            mGoogleApiClient.connect();
-        } else {
-            //remove this Toast!!!
-            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
-        }
     }
 
     @Override
@@ -132,15 +132,17 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.login:
-                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-               //     if (((Button) v).getText().equals("Start")) {
-                        locationrequest = LocationRequest.create();
-                        locationrequest.setInterval(1000);
-
-                        // maybe change "this" to 'activityname'.this
-                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
-                      //  ((Button) v).setText("Stop");
-                    }
+//                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+//               //     if (((Button) v).getText().equals("Start")) {
+//                        locationrequest = LocationRequest.create();
+//                        locationrequest.setInterval(1000);
+//
+//                        // maybe change "this" to 'activityname'.this
+//                        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
+//
+//
+//                      //  ((Button) v).setText("Stop");
+//                    }
 //                else {
 //                        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, Login.this);
 //                        ((Button) v).setText("Start");
@@ -148,9 +150,9 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
   //              }
 
                // if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                    locationrequest = LocationRequest.create();
-                    locationrequest.setInterval(100);
-                    LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, mPendingIntent);
+                   // locationrequest = LocationRequest.create();
+                   // locationrequest.setInterval(100);
+                    //LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, mPendingIntent);
                 //}
 
                 new AttemptLogin().execute();
@@ -165,49 +167,63 @@ public class Login extends Activity implements View.OnClickListener, GooglePlayS
         }
     }
 
-    @Override
-    protected void onDestroy() {
-       super.onDestroy();
-      //  if (mGoogleApiClient != null)
-       //     mGoogleApiClient.disconnect();
-    }
-
-    @Override
-    public void onConnected(Bundle connectionHint) {
-        Log.i(TAG, "onConnected");
-      }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onDisconnected() {
-        Log.i(TAG, "onDisconnected");
-
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        if (location != null) {
-            Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
-            //double asdf = location.
-            //add server send data here?  create class below and call class here??
-            //after creating class, call class in oncreate then end in onDestroy()??
-            //make it so updates are not as often
-            //is this what's actually being sent to the log thruout the app??
-            //add setInterval(interval here) ??????
-            //must create a var for LocationRequest.create(); then use setInterval on that...will this work in background?? or do I need to use pending intent?
-            //add getSpeed()???
-            //look into location.notify()
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        Log.i(TAG, "onConnectionFailed");
-    }
+//    @Override
+//    protected void onDestroy() {
+//       super.onDestroy();
+//      //  if (mGoogleApiClient != null)
+//       //     mGoogleApiClient.disconnect();
+//    }
+//
+//    @Override
+//    public void onConnected(Bundle connectionHint) {
+//        Log.i(TAG, "onConnected");
+//        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+//            //     if (((Button) v).getText().equals("Start")) {
+//            locationrequest = LocationRequest.create();
+//            locationrequest.setInterval(1000);
+//
+//            // maybe change "this" to 'activityname'.this
+//            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationrequest, this);
+//
+//
+//            //  ((Button) v).setText("Stop");
+//        }
+//      }
+//
+//
+//    @Override
+//    public void onConnectionSuspended(int i) {
+//
+//    }
+//
+//    @Override
+//    public void onDisconnected() {
+//        Log.i(TAG, "onDisconnected");
+//
+//    }
+//
+//    @Override
+//    public void onLocationChanged(Location location) {
+//        if (location != null) {
+//        //maybe just add sending data to server here? destroy upon logout
+//            Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
+//            //which one is actually printing to LogCat??
+//            //double asdf = location.
+//            //add server send data here?  create class below and call class here??
+//            //after creating class, call class in oncreate then end in onDestroy()??
+//            //make it so updates are not as often
+//            //is this what's actually being sent to the log thruout the app??
+//            //add setInterval(interval here) ??????
+//            //must create a var for LocationRequest.create(); then use setInterval on that...will this work in background?? or do I need to use pending intent?
+//            //add getSpeed()???
+//            //look into location.notify()
+//        }
+//    }
+//
+//    @Override
+//    public void onConnectionFailed(ConnectionResult result) {
+//        Log.i(TAG, "onConnectionFailed");
+//    }
 
     class AttemptLogin extends AsyncTask<String, String, String> {
 

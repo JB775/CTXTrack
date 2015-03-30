@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -24,7 +33,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThirdStop extends Activity {
+public class ThirdStop extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
 
     //private TextView stopNumber;
@@ -45,7 +54,6 @@ public class ThirdStop extends Activity {
     private TextView userIdThirdStop;
     private String intentUserId;
 
-    //make JSONParser private???
     private JSONParser jsonParser = new JSONParser();
 
     // Progress Dialog
@@ -53,8 +61,11 @@ public class ThirdStop extends Activity {
 
 
     //GPS Variables
-    //public static final String TAG = FirstStop.class.getSimpleName();
-    //private LocationProvider mLocationProvider;
+    private GoogleApiClient locationclient;
+    private LocationRequest locationrequest;
+    private double lat;
+    private double long3;
+    public static final String TAG = ThirdStop.class.getSimpleName();
 
     private int arrivedClick = 0;
     private int arrivedClickCount;
@@ -71,12 +82,27 @@ public class ThirdStop extends Activity {
 
     private static String server_url = "http://www.jabdata.com/ctxtrack/activity_main2.php";
     private static String server_url_2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
+    private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_stop);
+
+        int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if(resp == ConnectionResult.SUCCESS){
+            locationclient =      new GoogleApiClient.Builder(ThirdStop.this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .build();
+
+            locationclient.connect();
+        }
+        else{
+            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
+        }
 
         arrivedClick = 0;
         arrivedFirstClick = 0;
@@ -160,6 +186,47 @@ public class ThirdStop extends Activity {
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (locationclient != null)
+            locationclient.disconnect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        if(locationclient!=null && locationclient.isConnected()){
+            locationrequest = LocationRequest.create();
+           //location update frequency
+            locationrequest.setInterval(60*1000);
+            LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onDisconnected() {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if (location != null) {
+            lat = location.getLatitude();
+            long3 = location.getLongitude();
+            new InfoBegin3().execute();
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
     }
 
     class InfoBegin2 extends AsyncTask<String, String, String> {
@@ -265,6 +332,56 @@ public class ThirdStop extends Activity {
         protected void onPostExecute(String file_url) {
             // dismiss the dialog upon completion
             pDialog.dismiss();
+        }
+    }
+
+    class InfoBegin3 extends AsyncTask<String, String, String> {
+
+        protected String doInBackground(String... args) {
+
+            String userId2 = userIdThirdStop.getText().toString();
+            String stopNumArrival = getResources().getString(R.string.stop3_arrival);
+            String inTransit = getResources().getString(R.string.in_transit);
+            String backToDelran = getResources().getString(R.string.arrived_back_to_delran);
+            String lat2 = String.valueOf(lat);
+            String long2 = String.valueOf(long3);
+
+            // Building Parameters ArrayList
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            params.add(new BasicNameValuePair("latitude", lat2));
+            params.add(new BasicNameValuePair("longitude", long2));
+            //params.add(new BasicNameValuePair("stop", "LOCATION"));
+            if (arrivedClick == 0) {
+                params.add(new BasicNameValuePair("stop", inTransit));
+            } else if (arrivedClick == 1){
+                params.add(new BasicNameValuePair("stop", stopNumArrival));
+            } else if (arrivedClick == 2) {
+                params.add(new BasicNameValuePair("stop", backToDelran));
+            }
+            params.add(new BasicNameValuePair("latLong", lat2+","+long2));
+            params.add(new BasicNameValuePair("userId2", userId2));
+
+            // getting JSON Object - POST Method
+            JSONObject json;
+
+            json = jsonParser.makeHttpRequest(server_location,
+                    "POST", params);
+
+            // checking log cat for response
+            Log.d("Create Response", json.toString());
+            // checking for success tag
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+
+                } else {
+                    // failed
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
