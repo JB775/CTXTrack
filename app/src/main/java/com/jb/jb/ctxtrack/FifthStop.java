@@ -197,7 +197,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
         if(locationclient!=null && locationclient.isConnected()){
             locationrequest = LocationRequest.create();
             //location update frequency
-            locationrequest.setInterval(60*1000);
+            locationrequest.setInterval(600*1000);
             LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
         }
     }

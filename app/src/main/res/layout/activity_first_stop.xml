@@ -47,10 +47,10 @@
         android:id="@+id/departedFirstStop"
         android:gravity="center"
         android:textSize="17dp"
-        android:layout_toEndOf="@+id/userStop1"
-        android:layout_marginTop="44dp"
         android:layout_below="@+id/notes"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignLeft="@+id/arrivedToStop"
+        android:layout_alignStart="@+id/arrivedToStop"
+        android:layout_marginTop="42dp" />
 
     <EditText
         android:layout_width="wrap_content"

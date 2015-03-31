@@ -202,7 +202,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
             locationrequest = LocationRequest.create();
 
             //this was a variable edittext in other project, here it's just set to 100
-            locationrequest.setInterval(60*1000);
+            locationrequest.setInterval(600*1000);
 
             //is this being sent to TAG???
             LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);

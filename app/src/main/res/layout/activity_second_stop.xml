@@ -12,11 +12,13 @@
         android:text="@string/stop_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:gravity="center_horizontal"
         android:id="@+id/stopNumber"
         android:layout_below="@+id/trailerNumID"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        android:layout_marginTop="5dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -32,28 +34,35 @@
         android:layout_height="wrap_content"
         android:text="@string/click_upon_arrival_second"
         android:id="@+id/arrivedToStop"
+        android:textSize="17sp"
+        android:paddingTop="20dp"
         android:gravity="center"
-        android:textSize="17dp"
         android:layout_below="@+id/stopNumber"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_second_departure"
         android:id="@+id/departedSecondStop"
-        android:textSize="17dp"
-        android:layout_below="@+id/notes"
+        android:textSize="17sp"
         android:layout_marginTop="15dp"
-        android:layout_centerInParent="true"/>
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:layout_below="@+id/notes"
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:layout_alignTop="@+id/arrivedToStop"
+        android:layout_alignBottom="@+id/arrivedToStop"
+        android:layout_alignBaseline="@+id/arrivedToStop"
         android:layout_toLeftOf="@+id/arrivedToStop"
-        android:layout_toStartOf="@+id/arrivedToStop"/>
+        android:layout_toStartOf="@+id/arrivedToStop"
+        android:layout_centerHorizontal="true"
+        android:checked="false" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,17 +71,20 @@
         android:gravity="center_horizontal"
         android:hint="@string/if_you_dropped_trailer"
         android:layout_below="@+id/backInDelranButton"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_back_in_delran"
         android:id="@+id/backInDelranButton"
-        android:textSize="17dp"
-        android:layout_toEndOf="@+id/checkBox"
+        android:textSize="17sp"
         android:layout_below="@+id/orTextView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -134,7 +146,9 @@
         android:hint="@string/add_notes_for_dispatchers_here"
         android:gravity="center"
         android:layout_below="@+id/enterTrailerEditText"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"

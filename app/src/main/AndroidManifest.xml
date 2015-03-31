@@ -24,8 +24,8 @@
             android:name=".FirstStop"
             android:configChanges="orientation"
             android:label="@string/title_activity_first_stop"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.MainActivity" />
@@ -70,15 +70,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".LocationActivity"
-            android:label="@string/title_activity_location" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".ThirdStop"
             android:label="@string/title_activity_third_stop"
             android:parentActivityName=".SecondStop" >
@@ -110,6 +101,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.FifthStop" />
         </activity>
+
     </application>
 
 </manifest>
