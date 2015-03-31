@@ -39,12 +39,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.FirstStop" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".BackInDelran"
@@ -72,6 +66,7 @@
         <activity
             android:name=".ThirdStop"
             android:label="@string/title_activity_third_stop"
+            android:screenOrientation="portrait"
             android:parentActivityName=".SecondStop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -80,6 +75,7 @@
         <activity
             android:name=".FourthStop"
             android:label="@string/title_activity_fourth_stop"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ThirdStop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -88,6 +84,7 @@
         <activity
             android:name=".FifthStop"
             android:label="@string/title_activity_fifth_stop"
+            android:screenOrientation="portrait"
             android:parentActivityName=".FourthStop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -96,6 +93,7 @@
         <activity
             android:name=".SixthStop"
             android:label="@string/title_activity_sixth_stop"
+            android:screenOrientation="portrait"
             android:parentActivityName=".FifthStop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

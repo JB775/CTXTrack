@@ -12,12 +12,13 @@
         android:text="@string/stop_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:gravity="center_horizontal"
         android:id="@+id/stopNumber"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/trailerNumID"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        android:layout_marginTop="5dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -33,32 +34,36 @@
         android:layout_height="wrap_content"
         android:text="@string/click_upon_arrival_sixth"
         android:id="@+id/arrivedToStop"
-        android:layout_marginTop="31dp"
+        android:textSize="17sp"
+        android:paddingTop="20dp"
         android:gravity="center"
-        android:textSize="17dp"
         android:layout_below="@+id/stopNumber"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_sixth_departure"
         android:id="@+id/departedSixthStop"
-        android:gravity="center"
-        android:textSize="17dp"
-        android:layout_toEndOf="@+id/userStop"
+        android:textSize="17sp"
         android:layout_below="@+id/notes"
-        android:layout_toRightOf="@+id/userStop"
-        android:layout_marginTop="31dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_centerInParent="true"
+        android:paddingTop="15dp"
+        android:gravity="center" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:layout_toLeftOf="@+id/arrivedToStop"
-        android:layout_alignBaseline="@+id/arrivedToStop"
         android:layout_alignBottom="@+id/arrivedToStop"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignBaseline="@+id/arrivedToStop"
+        android:layout_toLeftOf="@+id/arrivedToStop"
+        android:layout_toStartOf="@+id/arrivedToStop"
+        android:layout_centerHorizontal="true"
+        android:clickable="false"
+        android:checked="false" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -66,22 +71,21 @@
         android:id="@+id/enterTrailerEditText"
         android:gravity="center_horizontal"
         android:hint="@string/if_you_dropped_trailer"
-        android:layout_marginTop="40dp"
         android:layout_below="@+id/backInDelranButton"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_back_in_delran"
         android:id="@+id/backInDelranButton"
-        android:textSize="17dp"
-        android:layout_toEndOf="@+id/checkBox"
-        android:layout_toRightOf="@+id/checkBox"
+        android:textSize="17sp"
         android:layout_below="@+id/orTextView"
-        android:layout_alignRight="@+id/arrivedToStop"
-        android:layout_alignEnd="@+id/arrivedToStop"/>
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -143,9 +147,9 @@
         android:hint="@string/add_notes_for_dispatchers_here"
         android:gravity="center"
         android:layout_below="@+id/enterTrailerEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="37dp"/>
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"

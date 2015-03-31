@@ -113,7 +113,9 @@
         android:layout_alignBottom="@+id/arrivedToStop"
         android:layout_toLeftOf="@+id/arrivedToStop"
         android:layout_toStartOf="@+id/arrivedToStop"
-        android:paddingBottom="25dp"/>
+        android:paddingBottom="25dp"
+        android:checked="false"
+        android:clickable="false"/>
 
     <EditText
         android:layout_width="wrap_content"

@@ -62,6 +62,7 @@
         android:layout_toLeftOf="@+id/arrivedToStop"
         android:layout_toStartOf="@+id/arrivedToStop"
         android:layout_centerHorizontal="true"
+        android:clickable="false"
         android:checked="false" />
 
     <EditText
