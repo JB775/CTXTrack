@@ -88,6 +88,8 @@
     <string name="create_new_user">Create Username!</string>
     <string name="create_new_password">Create Password!</string>
     <string name="in_transit">In Transit to Next Stop</string>
+    <string name="confirm_password">Confirm Password!</string>
+    <string name="passwords_dont_match">Password\'s Do Not Match!</string>
 
 
 

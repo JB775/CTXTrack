@@ -24,7 +24,7 @@ import java.util.List;
 
 public class Register extends Activity implements View.OnClickListener {
 
-    private EditText user, pass;
+    private EditText user, pass, passConfirm;
     private Button mRegister;
 
     // Progress Dialog
@@ -61,6 +61,7 @@ public class Register extends Activity implements View.OnClickListener {
 
         user = (EditText)findViewById(R.id.username);
         pass = (EditText)findViewById(R.id.password);
+        passConfirm = (EditText)findViewById(R.id.passConfirm);
         user.requestFocus();
 
 
@@ -81,8 +82,13 @@ public class Register extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-
-        new CreateUser().execute();
+        if (pass.getText().toString().trim().equals(passConfirm.getText().toString().trim())) {
+            new CreateUser().execute();
+        } else {
+            Toast.makeText(Register.this, R.string.passwords_dont_match, Toast.LENGTH_LONG).show();
+            pass.setText("");
+            passConfirm.setText("");
+        }
 
     }
 
@@ -104,8 +110,8 @@ public class Register extends Activity implements View.OnClickListener {
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
-            String username = user.getText().toString();
-            String password = pass.getText().toString();
+            String username = user.getText().toString().trim();
+            String password = pass.getText().toString().trim();
             try {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
