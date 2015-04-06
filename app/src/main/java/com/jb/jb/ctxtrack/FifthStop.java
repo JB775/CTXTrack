@@ -80,7 +80,8 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
 
     private static String server_url = "http://www.jabdata.com/ctxtrack/activity_main2.php";
     private static String server_url_2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
-    private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
+    //private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
+    private static String server_location = "http://www.jabdata.com/map/location.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -336,27 +337,16 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
         protected String doInBackground(String... args) {
 
             String userId2 = userIdFifthStop.getText().toString();
-            String stopNumArrival = getResources().getString(R.string.stop5_arrival);
-            String inTransit = getResources().getString(R.string.in_transit);
-            String backToDelran = getResources().getString(R.string.arrived_back_to_delran);
             String lat2 = String.valueOf(lat);
             String long2 = String.valueOf(long3);
 
             // Building Parameters ArrayList
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-            params.add(new BasicNameValuePair("latitude", lat2));
-            params.add(new BasicNameValuePair("longitude", long2));
-            //params.add(new BasicNameValuePair("stop", "LOCATION"));
-            if (arrivedClick == 0) {
-                params.add(new BasicNameValuePair("stop", inTransit));
-            } else if (arrivedClick == 1){
-                params.add(new BasicNameValuePair("stop", stopNumArrival));
-            } else if (arrivedClick == 2) {
-                params.add(new BasicNameValuePair("stop", backToDelran));
-            }
-            params.add(new BasicNameValuePair("latLong", lat2+","+long2));
-            params.add(new BasicNameValuePair("userId2", userId2));
+            //location params
+            params.add(new BasicNameValuePair("lat", lat2));
+            params.add(new BasicNameValuePair("lng", long2));
+            params.add(new BasicNameValuePair("name", userId2));
 
             // getting JSON Object - POST Method
             JSONObject json;
@@ -364,19 +354,6 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
             json = jsonParser.makeHttpRequest(server_location,
                     "POST", params);
 
-            // checking log cat for response
-            Log.d("Create Response", json.toString());
-            // checking for success tag
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-
-                } else {
-                    // failed
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
             return null;
         }
     }

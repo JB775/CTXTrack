@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     //home ip
     //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
     //HostGator
-    private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main.php";
+    private static String url_server = "http://www.jabdata.com/ctxtrack/activity_main.php";
     //private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
     private static String server_location = "http://www.jabdata.com/map/location.php";
 
@@ -175,7 +175,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         if(locationclient!=null && locationclient.isConnected()){
             locationrequest = LocationRequest.create();
             //location update frequency
-            locationrequest.setInterval(300*1000);
+            locationrequest.setInterval(600*1000);
             LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
         }
     }
@@ -263,7 +263,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             params.add(new BasicNameValuePair("stop", departingDelran));
 // getting JSON Object
 // Note that create product url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_create_product,
+            JSONObject json = jsonParser.makeHttpRequest(url_server,
                     "POST", params);
 // check log cat fro response
             Log.d("Create Response", json.toString());
