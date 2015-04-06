@@ -71,7 +71,8 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
     //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/activity_main.php";
     //HostGator
     private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main.php";
-    private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
+    //private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
+    private static String server_location = "http://www.jabdata.com/map/location.php";
 
     private static final String TAG_SUCCESS = "success";
 
@@ -174,7 +175,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         if(locationclient!=null && locationclient.isConnected()){
             locationrequest = LocationRequest.create();
             //location update frequency
-            locationrequest.setInterval(600*1000);
+            locationrequest.setInterval(300*1000);
             LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
         }
     }
@@ -314,12 +315,15 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             // Building Parameters ArrayList
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-            params.add(new BasicNameValuePair("latitude", lat2));
-            params.add(new BasicNameValuePair("longitude", long2));
+            //params.add(new BasicNameValuePair("latitude", lat2));
+            params.add(new BasicNameValuePair("lat", lat2));
+            //params.add(new BasicNameValuePair("longitude", long2));
+            params.add(new BasicNameValuePair("lng", long2));
             //params.add(new BasicNameValuePair("stop", "LOCATION"));
-            params.add(new BasicNameValuePair("stop", backToDelran));
-            params.add(new BasicNameValuePair("latLong", lat2+","+long2));
-            params.add(new BasicNameValuePair("userId2", userId2));
+            //params.add(new BasicNameValuePair("stop", backToDelran));
+            //params.add(new BasicNameValuePair("latLong", lat2+","+long2));
+            //params.add(new BasicNameValuePair("userId2", userId2));
+            params.add(new BasicNameValuePair("name", userId2));
 
             // getting JSON Object - POST Method
             JSONObject json;
@@ -327,19 +331,19 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             json = jsonParser.makeHttpRequest(server_location,
                     "POST", params);
 
-            // checking log cat for response
-            Log.d("Create Response", json.toString());
-            // checking for success tag
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-
-                } else {
-                    // failed
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            // checking log cat for response
+//            Log.d("Create Response", json.toString());
+//            // checking for success tag
+//            try {
+//                int success = json.getInt(TAG_SUCCESS);
+//                if (success == 1) {
+//
+//                } else {
+//                    // failed
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             return null;
         }
     }

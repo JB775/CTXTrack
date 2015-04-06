@@ -81,7 +81,8 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
     //private static String url_create_product = "http://localhost/ctxtrack/.php";
     private static String url_create_product = "http://www.jabdata.com/ctxtrack/activity_main2.php";
     private static String url_create_product2 = "http://www.jabdata.com/ctxtrack/activity_main2.php";
-    private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
+    //private static String server_location = "http://www.jabdata.com/ctxtrack/location.php";
+    private static String server_location = "http://www.jabdata.com/map/location.php";
 
     //home
     //private static String url_create_product = "http://192.168.56.1:1337/ctxtrack/first_stop.php";
@@ -224,7 +225,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
         if(locationclient!=null && locationclient.isConnected()){
             locationrequest = LocationRequest.create();
             //location update frequency
-            locationrequest.setInterval(600*1000);
+            locationrequest.setInterval(300*1000);
             LocationServices.FusedLocationApi.requestLocationUpdates(locationclient, locationrequest, this);
         }
     }
@@ -408,19 +409,19 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
             json = jsonParser.makeHttpRequest(server_location,
                     "POST", params);
 
-            // checking log cat for response
-            Log.d("Create Response", json.toString());
-            // checking for success tag
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-
-                } else {
-                    // failed
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            // checking log cat for response
+//            Log.d("Create Response", json.toString());
+//            // checking for success tag
+//            try {
+//                int success = json.getInt(TAG_SUCCESS);
+//                if (success == 1) {
+//
+//                } else {
+//                    // failed
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             return null;
         }
     }
