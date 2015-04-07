@@ -240,7 +240,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
                 truckMileage = x.subSequence(0,3) + "," + x.subSequence(3,6);
             }
             else if (z >= 7) {
-                truckMileage = x.subSequence(0,1) + "," + x.subSequence(0,4) + "," + x.subSequence(4,7);
+                truckMileage = x.subSequence(0,1) + "," + x.subSequence(1,4) + "," + x.subSequence(4,7);
             } else {
                 truckMileage = x;
             }

@@ -17,13 +17,11 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
-            android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".FirstStop"
             android:configChanges="orientation"
-            android:label="@string/title_activity_first_stop"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
@@ -33,7 +31,6 @@
         <activity
             android:name=".SecondStop"
             android:configChanges="orientation"
-            android:label="@string/title_activity_second_stop"
             android:parentActivityName=".FirstStop"
             android:screenOrientation="portrait" >
             <meta-data
@@ -43,13 +40,11 @@
         <activity
             android:name=".BackInDelran"
             android:configChanges="orientation"
-            android:label="@string/title_activity_back_in_delran"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Login"
             android:configChanges="orientation"
-            android:label="@string/title_activity_login"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,12 +55,10 @@
         <activity
             android:name=".Register"
             android:configChanges="orientation"
-            android:label="@string/title_activity_register"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ThirdStop"
-            android:label="@string/title_activity_third_stop"
             android:screenOrientation="portrait"
             android:parentActivityName=".SecondStop" >
             <meta-data
@@ -74,7 +67,6 @@
         </activity>
         <activity
             android:name=".FourthStop"
-            android:label="@string/title_activity_fourth_stop"
             android:screenOrientation="portrait"
             android:parentActivityName=".ThirdStop" >
             <meta-data
@@ -83,7 +75,6 @@
         </activity>
         <activity
             android:name=".FifthStop"
-            android:label="@string/title_activity_fifth_stop"
             android:screenOrientation="portrait"
             android:parentActivityName=".FourthStop" >
             <meta-data
@@ -92,7 +83,6 @@
         </activity>
         <activity
             android:name=".SixthStop"
-            android:label="@string/title_activity_sixth_stop"
             android:screenOrientation="portrait"
             android:parentActivityName=".FifthStop" >
             <meta-data

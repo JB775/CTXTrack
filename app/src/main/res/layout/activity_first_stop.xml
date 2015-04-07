@@ -39,7 +39,7 @@
         android:textSize="17dp"
         android:layout_below="@+id/stopNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -49,9 +49,8 @@
         android:gravity="center"
         android:textSize="17dp"
         android:layout_below="@+id/notes"
-        android:layout_alignLeft="@+id/arrivedToStop"
-        android:layout_alignStart="@+id/arrivedToStop"
-        android:layout_marginTop="42dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -127,7 +126,7 @@
         android:layout_below="@+id/enterTrailerEditText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
