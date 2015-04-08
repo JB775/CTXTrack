@@ -81,12 +81,17 @@ public class Login extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_login);
 
         // setup input fields
         user = (EditText) findViewById(R.id.username);
         pass = (EditText) findViewById(R.id.password);
         user.requestFocus();
+
 
 
         // setup buttons
