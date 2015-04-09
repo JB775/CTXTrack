@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -184,6 +186,52 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+
+
+
+        if (arrivedClick == 0) {
+            int click1 = 1;
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("clicked", click1);
+            editor.commit();
+        } else if (arrivedClick == 1) {
+            int click2 = 2;
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("clicked", click2);
+            editor.commit();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int click3 = settings.getInt("clicked", 0);
+        if(click3 == 2){
+            arrivedClickCount = 1;
+            backInDelranButton.setEnabled(false);
+            arrivedSixthStopButton.setEnabled(false);
+            checkBox.setChecked(true);
+            arrivedClick = 1;
+            arrivedWasClicked = 1;
+
+
+        } else {
+            arrivedClickCount = 0;
+            backInDelranButton.setEnabled(true);
+            checkBox.setChecked(false);
+            arrivedClick = 0;
+            arrivedWasClicked = 0;
+
+        }
     }
 
     @Override

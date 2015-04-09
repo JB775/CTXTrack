@@ -123,9 +123,8 @@
         android:id="@+id/notes"
         android:hint="@string/add_notes_for_dispatchers_here"
         android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/enterTrailerEditText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"/>
 
     <TextView
