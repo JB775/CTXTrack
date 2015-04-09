@@ -14,6 +14,7 @@
     <string name="insert_login">Insertar Nombre de Usuario</string>
     <string name="username">Usuario:</string>
     <string name="insert_username">¡Insertar Usuario!</string>
+    <string name="hello_world">Hello world!</string>
     <string name="password">Contraseña:</string>
     <string name="insert_password">Insertar Contraseña!</string>
     <string name="login_and_begin_shift">Iniciar Sesión y Comenzar a Trabajar</string>
