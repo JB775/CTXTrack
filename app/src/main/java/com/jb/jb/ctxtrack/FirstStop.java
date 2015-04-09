@@ -63,6 +63,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
     private LocationRequest locationrequest;
     private double lat;
     private double long3;
+    private float mph;
     public static final String TAG = FirstStop.class.getSimpleName();
 
     private int arrivedClick = 0;
@@ -291,6 +292,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
+            mph = location.getSpeed();
             new InfoBegin3().execute();
         }
     }
@@ -324,7 +326,8 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
          */
         protected String doInBackground(String... args) {
 
-            String dispatchNotes = notesEditText.getText().toString();
+            String mph2 = String.valueOf(mph);
+            String dispatchNotes = mph2 + " - " + notesEditText.getText().toString();
             intentTruckNumber = truckTextview.getText().toString();
             intentTrailerNumber = trailerTextview.getText().toString();
             //use trim();????

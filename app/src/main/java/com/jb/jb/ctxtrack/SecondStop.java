@@ -61,6 +61,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
     private LocationRequest locationrequest;
     private double lat;
     private double long3;
+    private float mph;
     public static final String TAG = SecondStop.class.getSimpleName();
 
     private JSONParser jsonParser = new JSONParser();
@@ -287,7 +288,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
-
+            mph = location.getSpeed();
             Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
         }
         new InfoBegin3().execute();
@@ -315,7 +316,8 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
 
         protected String doInBackground(String... args) {
 
-            String dispatchNotes = notesEditText.getText().toString();
+            String mph2 = String.valueOf(mph);
+            String dispatchNotes = mph2 + " - " + notesEditText.getText().toString();
             intentTruckNumber = truckTextview.getText().toString();
             intentTrailerNumber = trailerTextview.getText().toString();
             intentNewTrailerNumber = enterTrailerEditText.getText().toString();
