@@ -4,22 +4,22 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:theme="@android:style/Theme.NoTitleBar"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.jb.jb.ctxtrack.SecondStop">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:theme="@android:style/Theme.NoTitleBar"
+    tools:context="com.jb.jb.ctxtrack.FirstStop">
 
     <TextView
-        android:text="@string/stop_2"
+        android:text="@string/stop_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:layout_marginTop="31dp"
+        android:textSize="25dp"
         android:gravity="center_horizontal"
         android:id="@+id/stopNumber"
-        android:layout_below="@+id/trailerNumID"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="5dp" />
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -31,41 +31,26 @@
         android:layout_alignParentEnd="true"/>
 
     <Button
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="@string/click_upon_arrival_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click_upon_arrival_first"
         android:id="@+id/arrivedToStop"
-
-
-
+        android:gravity="center"
+        android:textSize="17dp"
         android:layout_below="@+id/stopNumber"
-
-         />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/click_second_departure"
-        android:id="@+id/departedSecondStop"
-        android:textSize="17sp"
-        android:paddingTop="15dp"
+        android:text="@string/click_first_departure"
+        android:id="@+id/departedFirstStop"
         android:gravity="center"
+        android:textSize="17dp"
         android:layout_below="@+id/notes"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox"
-        android:layout_alignBottom="@+id/arrivedToStop"
-        android:layout_alignBaseline="@+id/arrivedToStop"
-        android:layout_toLeftOf="@+id/arrivedToStop"
-        android:layout_toStartOf="@+id/arrivedToStop"
-        android:layout_centerHorizontal="true"
-        android:clickable="false"
-        android:checked="false" />
+        android:layout_marginTop="15dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -73,21 +58,9 @@
         android:id="@+id/enterTrailerEditText"
         android:gravity="center_horizontal"
         android:hint="@string/if_you_dropped_trailer"
-        android:layout_below="@+id/backInDelranButton"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/click_back_in_delran"
-        android:id="@+id/backInDelranButton"
-        android:textSize="17sp"
-        android:layout_below="@+id/orTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="false"
-        android:gravity="center" />
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/arrivedToStop"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,7 +68,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/truck_number_id"
         android:id="@+id/truckNum"
-        android:layout_below="@+id/userIdStop2"
+        android:layout_below="@+id/userIdStop1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"/>
@@ -133,32 +106,33 @@
         android:layout_alignParentStart="true"
         android:textColor="@android:color/darker_gray"/>
 
-    <TextView
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/or_text"
-        android:id="@+id/orTextView"
-        android:layout_below="@+id/arrivedToStop"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/checkBox"
+        android:layout_alignBottom="@+id/arrivedToStop"
+        android:layout_toLeftOf="@+id/arrivedToStop"
+        android:layout_toStartOf="@+id/arrivedToStop"
+        android:paddingBottom="25dp"
+        android:checked="false"
+        android:clickable="false"/>
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/notes"
         android:hint="@string/add_notes_for_dispatchers_here"
-        android:gravity="center"
-        android:layout_below="@+id/enterTrailerEditText"
+        android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:paddingTop="20dp"
-        android:layout_marginTop="5dp" />
+        android:layout_below="@+id/enterTrailerEditText"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/user"
-        android:id="@+id/userStop"
+        android:id="@+id/userStop1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -169,8 +143,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="-------------"
-        android:id="@+id/userIdStop2"
-        android:layout_below="@+id/userStop"
+        android:id="@+id/userIdStop1"
+        android:layout_below="@+id/userStop1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/darker_gray"/>

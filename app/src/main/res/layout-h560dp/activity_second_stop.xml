@@ -19,7 +19,8 @@
         android:id="@+id/stopNumber"
         android:layout_below="@+id/trailerNumID"
         android:layout_centerHorizontal="true"
-        android:paddingTop="5dp" />
+        android:paddingTop="5dp"
+        android:layout_marginTop="5dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -49,11 +50,11 @@
         android:text="@string/click_second_departure"
         android:id="@+id/departedSecondStop"
         android:textSize="17sp"
+        android:layout_marginTop="15dp"
         android:paddingTop="15dp"
         android:gravity="center"
         android:layout_below="@+id/notes"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp" />
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -151,7 +152,7 @@
         android:layout_below="@+id/enterTrailerEditText"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -13,26 +13,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@android:color/darker_gray"
-        android:textSize="10dp"
         android:layout_below="@+id/ctxBanner"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/darker_gray" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_and_begin_shift"
-        android:textSize="14dp"
+        android:textSize="17dp"
         android:textColor="@android:color/black"
         android:layout_below="@+id/password"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
         android:layout_alignRight="@+id/password"
         android:layout_alignEnd="@+id/password"
-        android:layout_marginTop="3dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/password"
@@ -43,7 +43,7 @@
         android:layout_below="@+id/passwordTextView"
         android:layout_centerHorizontal="true"
         android:hint="@string/insert_password"
-        android:textSize="14dp">
+        android:textSize="17dp">
 
         <requestFocus />
     </EditText>
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:textColor="@android:color/black"
-        android:textSize="15dp"
+        android:textSize="22dp"
         android:layout_below="@+id/username"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password" />
@@ -73,21 +73,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/insert_username"
-        android:textSize="14dp"
         android:layout_below="@+id/usernameTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/usernameTextView"
+        android:layout_alignStart="@+id/usernameTextView"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/insert_username"
+        android:textSize="17dp"/>
 
     <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="&quot;Small layout&quot;"
+        android:text="&quot;Larger Display&quot;"
         android:textColor="@android:color/black"
-        android:textSize="15dp"
-        android:layout_alignTop="@+id/register"
-        android:layout_alignLeft="@+id/username"
-        android:layout_alignStart="@+id/username"
-        android:layout_marginTop="8dp" />
+        android:textSize="22dp"
+        android:layout_below="@+id/register"
+        android:layout_alignRight="@+id/passwordTextView"
+        android:layout_alignEnd="@+id/passwordTextView"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

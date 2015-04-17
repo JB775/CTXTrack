@@ -16,8 +16,8 @@
         android:layout_below="@+id/ctxBanner"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:layout_marginTop="50dp"
+        android:textColor="@android:color/black"/>
 
     <EditText
         android:id="@+id/username"
@@ -26,8 +26,7 @@
         android:layout_alignLeft="@+id/usernameTextView"
         android:layout_below="@+id/usernameTextView"
         android:ems="10"
-        android:hint="@string/create_new_user"
-        android:textSize="12dp" />
+        android:hint="@string/create_new_user" />
 
     <TextView
         android:id="@+id/passwordTextView"
@@ -36,8 +35,7 @@
         android:layout_alignLeft="@+id/username"
         android:layout_below="@+id/username"
         android:text="@string/password"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -59,22 +57,20 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/create_new_password"
-        android:textSize="12dp" />
+        android:hint="@string/create_new_password" />
 
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/passConfirm"
         android:layout_alignLeft="@+id/passConfirm"
         android:layout_alignStart="@+id/passConfirm"
         android:layout_alignRight="@+id/passConfirm"
         android:layout_alignEnd="@+id/passConfirm"
-        android:textColor="@android:color/black"
-        android:textSize="13dp" />
+        android:textColor="@android:color/black"/>
 
     <ImageView
         android:id="@+id/ctxBanner"
@@ -93,7 +89,6 @@
         android:id="@+id/passConfirm"
         android:layout_below="@+id/password"
         android:hint="@string/confirm_password"
-        android:layout_centerHorizontal="true"
-        android:textSize="12dp" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
