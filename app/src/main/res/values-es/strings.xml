@@ -90,6 +90,31 @@
     <string name="in_transit">In Transit to Next Stop</string>
     <string name="confirm_password">¡Confirmar Contraseña!</string>
     <string name="passwords_dont_match">¡Contraseñas Introducidas son Diferentes! ¡Ay, Caramba!</string>
+    <string name="stop_7">Stop #7 o CTX</string>
+    <string name="stop_8">Stop #8 o CTX</string>
+    <string name="stop_9">Stop #9 o CTX</string>
+    <string name="stop_10">Stop #10 o CTX</string>
+    <string name="click_upon_arrival_seventh">Click Upon Arrival to 7th Stop</string>
+    <string name="click_upon_arrival_eighth">Click Upon Arrival to 8th Stop</string>
+    <string name="click_upon_arrival_ninth">Click Upon Arrival to 9th Stop</string>
+    <string name="click_upon_arrival_tenth">Click Upon Arrival to 10th Stop</string>
+    <string name="click_seventh_departure">Click Upon Departure of 7th Stop</string>
+    <string name="click_eighth_departure">Click Upon Departure of 8th Stop</string>
+    <string name="click_ninth_departure">Click Upon Departure of 9th Stop</string>
+    <string name="click_tenth_departure">Click Upon Departure of 10th Stop</string>
+    <string name="notes">Add Any Extra Notes for Dispatchers Here</string>
+    <string name="stop7_arrival">Stop # 7 Arrival</string>
+    <string name="stop7_departure">Stop # 7 Departure</string>
+    <string name="stop8_arrival">Stop # 8 Arrival</string>
+    <string name="stop8_departure">Stop # 8 Departure</string>
+    <string name="stop9_arrival">Stop # 9 Arrival</string>
+    <string name="stop9_departure">Stop # 9 Departure</string>
+    <string name="stop10_arrival">Stop # 10 Arrival</string>
+    <string name="stop10_departure">Stop # 10 Departure</string>
+    <string name="title_activity_seventh_stop">SeventhStop</string>
+    <string name="title_activity_eighth_stop">EighthStop</string>
+    <string name="title_activity_ninth_stop">NinthStop</string>
+    <string name="title_activity_tenth_stop">TenthStop</string>
 
 
 
