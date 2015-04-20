@@ -140,7 +140,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
                 arrivedClickCount = arrivedFirstClick++;
 
                 if (arrivedClickCount == 0) {
-                    new InfoBegin2().execute();
+                    new InfoBegin20().execute();
                     Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
                 }
                 if (arrivedClickCount >= 1) {
@@ -161,10 +161,10 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
                     arrivedClick = 0;
                     if (arrivedWasClicked == 1){
                         Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin20().execute();
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin20().execute();
                     }
                 }
             }
@@ -175,7 +175,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), R.string.back_in_delran, Toast.LENGTH_LONG).show();
                 arrivedClick = 2;
-                new InfoBegin2().execute();
+                new InfoBegin20().execute();
             }
         });
     }
@@ -266,7 +266,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
-            new InfoBegin3().execute();
+            new InfoBegin21().execute();
         }
     }
 
@@ -275,7 +275,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
 
     }
 
-    class InfoBegin2 extends AsyncTask<String, String, String> {
+    class InfoBegin20 extends AsyncTask<String, String, String> {
 
         // Showing Progress Dialog
 
@@ -338,7 +338,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
                 if (success == 1) {
 
                     if (arrivedClick == 0) {
-                        Intent intent = new Intent(SixthStop.this, BackInDelran.class);
+                        Intent intent = new Intent(SixthStop.this, SeventhStop.class);
 
                         if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
                             intent.putExtra("intentTrailerNumber", intentTrailerNumber);
@@ -381,7 +381,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
         }
     }
 
-//    class InfoBegin3 extends AsyncTask<String, String, String> {
+//    class InfoBegin21 extends AsyncTask<String, String, String> {
 //
 //        protected String doInBackground(String... args) {
 //
@@ -431,7 +431,7 @@ public class SixthStop extends Activity implements GooglePlayServicesClient.Conn
 //        }
 //    }
 
-    class InfoBegin3 extends AsyncTask<String, String, String> {
+    class InfoBegin21 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 

@@ -7,19 +7,20 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:theme="@android:style/Theme.NoTitleBar"
+    android:theme="@android:style/Theme.Holo.Light.NoActionBar"
     tools:context="com.jb.jb.ctxtrack.FirstStop">
 
     <TextView
         android:text="@string/stop_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:textSize="25dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
         android:gravity="center_horizontal"
         android:id="@+id/stopNumber"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -36,10 +37,10 @@
         android:text="@string/click_upon_arrival_first"
         android:id="@+id/arrivedToStop"
         android:gravity="center"
-        android:textSize="17dp"
+        android:textSize="14dp"
         android:layout_below="@+id/stopNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="5dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -47,10 +48,10 @@
         android:text="@string/click_first_departure"
         android:id="@+id/departedFirstStop"
         android:gravity="center"
-        android:textSize="17dp"
+        android:textSize="15dp"
         android:layout_below="@+id/notes"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="12dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -58,9 +59,10 @@
         android:id="@+id/enterTrailerEditText"
         android:gravity="center_horizontal"
         android:hint="@string/if_you_dropped_trailer"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/arrivedToStop"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +73,8 @@
         android:layout_below="@+id/userIdStop1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,7 +85,8 @@
         android:layout_below="@+id/truckNum"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,7 +97,8 @@
         android:layout_below="@+id/truckNumID"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -104,18 +109,8 @@
         android:layout_below="@+id/trailerNum"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox"
-        android:layout_alignBottom="@+id/arrivedToStop"
-        android:layout_toLeftOf="@+id/arrivedToStop"
-        android:layout_toStartOf="@+id/arrivedToStop"
-        android:paddingBottom="25dp"
-        android:checked="false"
-        android:clickable="false"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12dp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -125,7 +120,8 @@
         android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/enterTrailerEditText"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="13dp"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -136,7 +132,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -147,6 +144,19 @@
         android:layout_below="@+id/userStop1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:layout_alignBottom="@+id/arrivedToStop"
+        android:layout_alignBaseline="@+id/arrivedToStop"
+        android:layout_toLeftOf="@+id/arrivedToStop"
+        android:layout_toStartOf="@+id/arrivedToStop"
+        android:layout_centerHorizontal="true"
+        android:clickable="false"
+        android:checked="false" />
 
 </RelativeLayout>

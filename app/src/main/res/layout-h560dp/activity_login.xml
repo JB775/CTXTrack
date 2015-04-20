@@ -28,11 +28,8 @@
         android:textSize="17dp"
         android:textColor="@android:color/black"
         android:layout_below="@+id/password"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password"
-        android:layout_alignRight="@+id/password"
-        android:layout_alignEnd="@+id/password"
-        android:layout_marginTop="10dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
 
     <EditText
         android:id="@+id/password"
@@ -40,10 +37,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:hint="@string/insert_password"
+        android:textSize="17dp"
         android:layout_below="@+id/passwordTextView"
         android:layout_centerHorizontal="true"
-        android:hint="@string/insert_password"
-        android:textSize="17dp">
+        android:gravity="center">
 
         <requestFocus />
     </EditText>
@@ -65,31 +63,28 @@
         android:textColor="@android:color/black"
         android:textSize="22dp"
         android:layout_below="@+id/username"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password" />
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@+id/usernameTextView"
-        android:layout_alignLeft="@+id/usernameTextView"
-        android:layout_alignStart="@+id/usernameTextView"
-        android:layout_centerHorizontal="true"
         android:hint="@string/insert_username"
-        android:textSize="17dp"/>
+        android:textSize="17dp"
+        android:layout_toStartOf="@+id/register"
+        android:layout_below="@+id/usernameTextView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="&quot;Larger Display&quot;"
+        android:text="@string/username"
         android:textColor="@android:color/black"
         android:textSize="22dp"
         android:layout_below="@+id/register"
-        android:layout_alignRight="@+id/passwordTextView"
-        android:layout_alignEnd="@+id/passwordTextView"
-        android:layout_marginTop="15dp" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

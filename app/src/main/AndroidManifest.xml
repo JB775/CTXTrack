@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jb.jb.ctxtrack">
+    package="com.jb.jb.ctxtrack" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -59,16 +58,16 @@
         </activity>
         <activity
             android:name=".ThirdStop"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".SecondStop" >
+            android:parentActivityName=".SecondStop"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.SecondStop" />
         </activity>
         <activity
             android:name=".FourthStop"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ThirdStop" >
+            android:parentActivityName=".ThirdStop"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.ThirdStop" />
@@ -76,8 +75,8 @@
         <activity
             android:name=".FifthStop"
             android:label="@string/title_activity_fifth_stop"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".FourthStop" >
+            android:parentActivityName=".FourthStop"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.FourthStop" />
@@ -85,13 +84,28 @@
         <activity
             android:name=".SixthStop"
             android:label="@string/title_activity_sixth_stop"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".FifthStop" >
+            android:parentActivityName=".FifthStop"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jb.jb.ctxtrack.FifthStop" />
         </activity>
-
+        <activity
+            android:name=".SeventhStop"
+            android:label="@string/title_activity_seventh_stop" >
+        </activity>
+        <activity
+            android:name=".EighthStop"
+            android:label="@string/title_activity_eighth_stop" >
+        </activity>
+        <activity
+            android:name=".NinthStop"
+            android:label="@string/title_activity_ninth_stop" >
+        </activity>
+        <activity
+            android:name=".TenthStop"
+            android:label="@string/title_activity_tenth_stop" >
+        </activity>
     </application>
 
 </manifest>

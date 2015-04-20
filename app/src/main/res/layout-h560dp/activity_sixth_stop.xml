@@ -5,7 +5,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                android:theme="@android:style/Theme.NoTitleBar"
+                android:theme="@android:style/Theme.Holo.Light.NoActionBar"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 tools:context="com.jb.jb.ctxtrack.SixthStop">
@@ -14,13 +14,14 @@
         android:text="@string/stop_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="25dp"
         android:gravity="center_horizontal"
         android:id="@+id/stopNumber"
         android:layout_below="@+id/trailerNumID"
         android:layout_centerHorizontal="true"
-        android:paddingTop="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black"
+        android:paddingTop="3dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -36,24 +37,23 @@
         android:layout_height="wrap_content"
         android:text="@string/click_upon_arrival_sixth"
         android:id="@+id/arrivedToStop"
-        android:textSize="17sp"
-        android:paddingTop="20dp"
-        android:gravity="center"
+        android:textSize="17dp"
         android:layout_below="@+id/stopNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_sixth_departure"
         android:id="@+id/departedSixthStop"
-        android:textSize="17sp"
+        android:textSize="17dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
         android:layout_below="@+id/notes"
-        android:layout_marginTop="15dp"
-        android:layout_centerInParent="true"
-        android:paddingTop="15dp"
-        android:gravity="center" />
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -75,14 +75,17 @@
         android:hint="@string/if_you_dropped_trailer"
         android:layout_below="@+id/backInDelranButton"
         android:layout_centerHorizontal="true"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:textSize="16dp"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="10dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_back_in_delran"
         android:id="@+id/backInDelranButton"
-        android:textSize="17sp"
+        android:textSize="16.5dp"
         android:layout_below="@+id/orTextView"
         android:layout_centerHorizontal="true"
         android:layout_alignParentEnd="false"
@@ -98,7 +101,8 @@
         android:layout_below="@+id/userIdStop6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -109,7 +113,8 @@
         android:layout_below="@+id/truckNum"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -120,7 +125,8 @@
         android:layout_below="@+id/truckNumID"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -131,7 +137,8 @@
         android:layout_below="@+id/trailerNum"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -140,7 +147,11 @@
         android:text="@string/or_text"
         android:id="@+id/orTextView"
         android:layout_below="@+id/arrivedToStop"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@android:color/black"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -150,8 +161,10 @@
         android:gravity="center"
         android:layout_below="@+id/enterTrailerEditText"
         android:layout_centerHorizontal="true"
-        android:paddingTop="20dp"
-        android:layout_marginTop="15dp" />
+        android:paddingTop="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="17dp"
+        android:paddingBottom="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -162,7 +175,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -173,6 +187,7 @@
         android:layout_below="@+id/userStop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13dp"/>
 
 </RelativeLayout>

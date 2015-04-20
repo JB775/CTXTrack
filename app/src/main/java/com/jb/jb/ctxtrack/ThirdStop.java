@@ -67,6 +67,7 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
     private LocationRequest locationrequest;
     private double lat;
     private double long3;
+    private float mph;
     public static final String TAG = ThirdStop.class.getSimpleName();
 
     private int arrivedClick = 0;
@@ -143,7 +144,7 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
                 arrivedClickCount = arrivedFirstClick++;
 
                 if (arrivedClickCount == 0) {
-                    new InfoBegin2().execute();
+                    new InfoBegin16().execute();
                     Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
                 }
                 if (arrivedClickCount >= 1) {
@@ -164,10 +165,10 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
                     arrivedClick = 0;
                     if (arrivedWasClicked == 1){
                         Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin16().execute();
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin16().execute();
                     }
                 }
             }
@@ -178,7 +179,7 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), R.string.back_in_delran, Toast.LENGTH_LONG).show();
                 arrivedClick = 2;
-                new InfoBegin2().execute();
+                new InfoBegin16().execute();
             }
         });
     }
@@ -269,7 +270,8 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
-            new InfoBegin3().execute();
+            mph = location.getSpeed();
+            new InfoBegin17().execute();
         }
     }
 
@@ -278,7 +280,7 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
 
     }
 
-    class InfoBegin2 extends AsyncTask<String, String, String> {
+    class InfoBegin16 extends AsyncTask<String, String, String> {
 
         // Showing Progress Dialog
 
@@ -294,7 +296,8 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
 
         protected String doInBackground(String... args) {
 
-            String dispatchNotes = notesEditText.getText().toString();
+            String mph2 = String.valueOf(mph);
+            String dispatchNotes = mph2 + " - " + notesEditText.getText().toString();
             intentTruckNumber = truckTextview.getText().toString();
             intentTrailerNumber = trailerTextview.getText().toString();
             intentNewTrailerNumber = enterTrailerEditText.getText().toString();
@@ -384,7 +387,7 @@ public class ThirdStop extends Activity implements GooglePlayServicesClient.Conn
         }
     }
 
-    class InfoBegin3 extends AsyncTask<String, String, String> {
+    class InfoBegin17 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 

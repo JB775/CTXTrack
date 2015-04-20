@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:theme="@android:style/Theme.NoTitleBar"
+    android:theme="@android:style/Theme.Holo.Light.NoActionBar"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -19,7 +19,8 @@
         android:id="@+id/truck_number_editText"
         android:hint="@string/insert_truck_number"
         android:layout_below="@+id/ctx_logo"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,7 +29,8 @@
 
         android:hint="@string/insert_trailer_number"
         android:layout_below="@+id/truck_number_editText"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -45,7 +47,8 @@
         android:inputType="time"
         android:hint="@string/insert_delran_departure_time"
         android:layout_below="@+id/truck_mileage"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -53,7 +56,8 @@
         android:text="@string/submit_and_continue_to_first_stop"
         android:id="@+id/submit_button"
         android:layout_below="@+id/delranDepartureTime_editText"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,7 +66,8 @@
         android:inputType="number"
         android:hint="@string/insert_truck_mileage"
         android:layout_below="@+id/trailer_editText"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,7 +78,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="13dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,7 +90,8 @@
         android:layout_below="@+id/userMain"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13dp"/>
 
 
 </RelativeLayout>

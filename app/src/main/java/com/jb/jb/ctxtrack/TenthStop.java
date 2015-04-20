@@ -35,14 +35,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FifthStop extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class TenthStop extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     //private TextView stopNumber;
     //private TextView userId;
 
     private Button backInDelranButton;
-    private Button arrivedFifthStopButton;
-    private Button departedFifthStopButton;
+    private Button arrivedTenthStopButton;
+    private Button departedTenthStopButton;
     private EditText enterTrailerEditText;
     private EditText notesEditText;
     private TextView truckTextview;
@@ -52,7 +52,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
     private String b;
     private String c;
     //private String d;
-    private TextView userIdFifthStop;
+    private TextView userIdTenthStop;
     private String intentUserId;
 
     private JSONParser jsonParser = new JSONParser();
@@ -65,7 +65,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
     private LocationRequest locationrequest;
     private double lat;
     private double long3;
-    public static final String TAG = FifthStop.class.getSimpleName();
+    public static final String TAG = TenthStop.class.getSimpleName();
 
     private int arrivedClick = 0;
     private int arrivedClickCount;
@@ -88,11 +88,11 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fifth_stop);
+        setContentView(R.layout.activity_tenth_stop);
 
         int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if(resp == ConnectionResult.SUCCESS){
-            locationclient =      new GoogleApiClient.Builder(FifthStop.this)
+            locationclient =      new GoogleApiClient.Builder(TenthStop.this)
                     .addApi(LocationServices.API)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
@@ -110,14 +110,14 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
 
 
         backInDelranButton = (Button) findViewById(R.id.backInDelranButton);
-        arrivedFifthStopButton = (Button) findViewById(R.id.arrivedToStop);
-        departedFifthStopButton = (Button) findViewById(R.id.departedFifthStop);
+        arrivedTenthStopButton = (Button) findViewById(R.id.arrivedToStop);
+        departedTenthStopButton = (Button) findViewById(R.id.departedTenthStop);
         enterTrailerEditText = (EditText) findViewById(R.id.enterTrailerEditText);
         truckTextview = (TextView) findViewById(R.id.truckNumID);
         trailerTextview = (TextView) findViewById(R.id.trailerNumID);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         notesEditText = (EditText) findViewById(R.id.notes);
-        userIdFifthStop = (TextView) findViewById(R.id.userIdStop5);
+        userIdTenthStop = (TextView) findViewById(R.id.userIdStop10);
 
         Intent intent = getIntent();
         {
@@ -126,10 +126,10 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
             c = intent.getStringExtra("intentUserId");
             truckTextview.setText(a);
             trailerTextview.setText(b);
-            userIdFifthStop.setText(c);
+            userIdTenthStop.setText(c);
         }
 
-        arrivedFifthStopButton.setOnClickListener(new View.OnClickListener() {
+        arrivedTenthStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -140,7 +140,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
                 arrivedClickCount = arrivedFirstClick++;
 
                 if (arrivedClickCount == 0) {
-                    new InfoBegin4().execute();
+                    new InfoBegin80().execute();
                     Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
                 }
                 if (arrivedClickCount >= 1) {
@@ -149,11 +149,11 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
             }
         });
 
-        departedFifthStopButton.setOnClickListener(new View.OnClickListener() {
+        departedTenthStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                arrivedFifthStopButton.setEnabled(false);
+                arrivedTenthStopButton.setEnabled(false);
 
                 if (arrivedWasClicked == 0 && notesEditText.getText().toString().trim().isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.enter_arrival_time_into_notes, Toast.LENGTH_LONG).show();
@@ -161,10 +161,10 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
                     arrivedClick = 0;
                     if (arrivedWasClicked == 1){
                         Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                        new InfoBegin4().execute();
+                        new InfoBegin80().execute();
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
-                        new InfoBegin4().execute();
+                        new InfoBegin80().execute();
                     }
                 }
             }
@@ -175,7 +175,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), R.string.back_in_delran, Toast.LENGTH_LONG).show();
                 arrivedClick = 2;
-                new InfoBegin4().execute();
+                new InfoBegin80().execute();
             }
         });
     }
@@ -218,7 +218,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
         if(click3 == 2){
             arrivedClickCount = 1;
             backInDelranButton.setEnabled(false);
-            arrivedFifthStopButton.setEnabled(false);
+            arrivedTenthStopButton.setEnabled(false);
             checkBox.setChecked(true);
             arrivedClick = 1;
             arrivedWasClicked = 1;
@@ -266,7 +266,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
-            new InfoBegin5().execute();
+            new InfoBegin85().execute();
         }
     }
 
@@ -275,14 +275,14 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
 
     }
 
-    class InfoBegin4 extends AsyncTask<String, String, String> {
+    class InfoBegin80 extends AsyncTask<String, String, String> {
 
         // Showing Progress Dialog
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(FifthStop.this);
+            pDialog = new ProgressDialog(TenthStop.this);
             pDialog.setMessage("Updating Information...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -295,10 +295,10 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
             intentTruckNumber = truckTextview.getText().toString();
             intentTrailerNumber = trailerTextview.getText().toString();
             intentNewTrailerNumber = enterTrailerEditText.getText().toString();
-            intentUserId = userIdFifthStop.getText().toString();
-            String userId2 = userIdFifthStop.getText().toString();
-            String stopNumArrival = getResources().getString(R.string.stop5_arrival);
-            String stopNumDeparture = getResources().getString(R.string.stop5_departure);
+            intentUserId = userIdTenthStop.getText().toString();
+            String userId2 = userIdTenthStop.getText().toString();
+            String stopNumArrival = getResources().getString(R.string.stop10_arrival);
+            String stopNumDeparture = getResources().getString(R.string.stop10_departure);
             String backToDelran = getResources().getString(R.string.arrived_back_to_delran);
 
             // Building Parameters ArrayList
@@ -338,7 +338,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
                 if (success == 1) {
 
                     if (arrivedClick == 0) {
-                        Intent intent = new Intent(FifthStop.this, SixthStop.class);
+                        Intent intent = new Intent(TenthStop.this, BackInDelran.class);
 
                         if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
                             intent.putExtra("intentTrailerNumber", intentTrailerNumber);
@@ -354,7 +354,7 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
                         finish();
                     } else if (arrivedClick == 2) {
 
-                        Intent intent = new Intent(FifthStop.this, BackInDelran.class);
+                        Intent intent = new Intent(TenthStop.this, BackInDelran.class);
                         if (intentNewTrailerNumber.isEmpty() || intentNewTrailerNumber.length() == 0 || intentNewTrailerNumber.equals("")) {
                             intent.putExtra("intentTrailerNumber", intentTrailerNumber);
                         } else {
@@ -380,11 +380,11 @@ public class FifthStop extends Activity implements GooglePlayServicesClient.Conn
         }
     }
 
-    class InfoBegin5 extends AsyncTask<String, String, String> {
+    class InfoBegin85 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 
-            String userId2 = userIdFifthStop.getText().toString();
+            String userId2 = userIdTenthStop.getText().toString();
             String lat2 = String.valueOf(lat);
             String long2 = String.valueOf(long3);
 

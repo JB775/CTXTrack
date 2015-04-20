@@ -143,7 +143,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
                     arrivedClickCount = arrivedFirstClick++;
 
                     if (arrivedClickCount == 0) {
-                        new InfoBegin2().execute();
+                        new InfoBegin23().execute();
                         Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
                     }
                     if (arrivedClickCount >= 1) {
@@ -164,10 +164,10 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
                     arrivedClick = 0;
                     if (arrivedWasClicked == 1){
                         Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin23().execute();
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin23().execute();
                     }
                 }
             }
@@ -178,7 +178,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), R.string.back_in_delran, Toast.LENGTH_LONG).show();
                 arrivedClick = 2;
-                new InfoBegin2().execute();
+                new InfoBegin23().execute();
             }
         });
      }
@@ -291,7 +291,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
             mph = location.getSpeed();
             Log.i(TAG, "Location Request :" + location.getLatitude() + "," + location.getLongitude());
         }
-        new InfoBegin3().execute();
+        new InfoBegin22().execute();
 
     }
 
@@ -300,7 +300,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
 
     }
 
-    class InfoBegin2 extends AsyncTask<String, String, String> {
+    class InfoBegin23 extends AsyncTask<String, String, String> {
 
          // Showing Progress Dialog
 
@@ -407,7 +407,7 @@ public class SecondStop extends Activity implements GooglePlayServicesClient.Con
         }
     }
 
-    class InfoBegin3 extends AsyncTask<String, String, String> {
+    class InfoBegin22 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 

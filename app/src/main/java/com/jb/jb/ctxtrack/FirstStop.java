@@ -153,7 +153,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
                     arrivedClickCount = arrivedFirstClick++;
 
                     if (arrivedClickCount == 0) {
-                        new InfoBegin2().execute();
+                        new InfoBegin25().execute();
                         Toast.makeText(getApplicationContext(), R.string.arrival_time_submitted, Toast.LENGTH_LONG).show();
                     }
                     if (arrivedClickCount >= 1) {
@@ -178,10 +178,10 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
                     arrivedClick = 0;
                     if (arrivedWasClicked == 1){
                         Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin25().execute();
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.next_time_arrival, Toast.LENGTH_LONG).show();
-                        new InfoBegin2().execute();
+                        new InfoBegin25().execute();
                     }
                 }
 
@@ -293,7 +293,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
             lat = location.getLatitude();
             long3 = location.getLongitude();
             mph = location.getSpeed();
-            new InfoBegin3().execute();
+            new InfoBegin30().execute();
         }
     }
 
@@ -307,7 +307,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
 //
 //    }
 
-    class InfoBegin2 extends AsyncTask<String, String, String> {
+    class InfoBegin25 extends AsyncTask<String, String, String> {
         /**
          * Before starting background thread Show Progress Dialog
          */
@@ -327,7 +327,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
         protected String doInBackground(String... args) {
 
             String mph2 = String.valueOf(mph);
-            String dispatchNotes = mph2 + " - " + notesEditText.getText().toString();
+            String dispatchNotes = mph2 + " - " + notesEditText.getText().toString() + " - " + "V1.05";
             intentTruckNumber = truckTextview.getText().toString();
             intentTrailerNumber = trailerTextview.getText().toString();
             //use trim();????
@@ -425,7 +425,7 @@ public class FirstStop extends Activity implements GooglePlayServicesClient.Conn
         }
     }
 
-    class InfoBegin3 extends AsyncTask<String, String, String> {
+    class InfoBegin30 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 

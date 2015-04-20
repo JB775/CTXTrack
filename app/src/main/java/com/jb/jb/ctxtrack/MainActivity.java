@@ -195,7 +195,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
-            new InfoBegin3().execute();
+            new InfoBegin0().execute();
         }
     }
 
@@ -303,7 +303,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
         }
     }
 
-    class InfoBegin3 extends AsyncTask<String, String, String> {
+    class InfoBegin0 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 

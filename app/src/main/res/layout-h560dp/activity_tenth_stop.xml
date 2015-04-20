@@ -8,10 +8,11 @@
                 android:theme="@android:style/Theme.Holo.Light.NoActionBar"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                tools:context="com.jb.jb.ctxtrack.ThirdStop">
+                tools:context="com.jb.jb.ctxtrack.TenthStop"
+    >
 
     <TextView
-        android:text="@string/stop_3"
+        android:text="@string/stop_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25dp"
@@ -35,7 +36,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/click_upon_arrival_third"
+        android:text="@string/click_upon_arrival_tenth"
         android:id="@+id/arrivedToStop"
         android:textSize="17dp"
         android:layout_below="@+id/stopNumber"
@@ -47,8 +48,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/click_third_departure"
-        android:id="@+id/departedThirdStop"
+        android:text="@string/click_tenth_departure"
+        android:id="@+id/departedTenthStop"
         android:textSize="17dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
@@ -98,7 +99,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/truck_number_id"
         android:id="@+id/truckNum"
-        android:layout_below="@+id/userIdStop3"
+        android:layout_below="@+id/userIdStop10"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"
@@ -183,7 +184,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="-------------"
-        android:id="@+id/userIdStop3"
+        android:id="@+id/userIdStop10"
         android:layout_below="@+id/userStop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

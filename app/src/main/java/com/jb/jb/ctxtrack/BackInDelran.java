@@ -81,7 +81,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_back_in_delran);
+        setContentView(R.layout.activity_back_in_ctx);
 
         int resp = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if(resp == ConnectionResult.SUCCESS){
@@ -126,7 +126,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
                 Toast.makeText(getApplicationContext(), R.string.logged_out, Toast.LENGTH_LONG).show();
                 //  if (mGoogleApiClient != null)
                 //     mGoogleApiClient.disconnect();
-                new InfoBegin2().execute();
+                new InfoBegin27().execute();
             }
         });
 
@@ -137,7 +137,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
                 arrivedClick = 1;
                 Toast.makeText(getApplicationContext(), R.string.departure_time_submitted, Toast.LENGTH_LONG).show();
 
-                new InfoBegin2().execute();
+                new InfoBegin27().execute();
             }
         });
 
@@ -185,7 +185,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
         if (location != null) {
             lat = location.getLatitude();
             long3 = location.getLongitude();
-            new InfoBegin3().execute();
+            new InfoBegin40().execute();
         }
     }
 
@@ -195,7 +195,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
     }
 
 
-    class InfoBegin2 extends AsyncTask<String, String, String> {
+    class InfoBegin27 extends AsyncTask<String, String, String> {
 
         // Showing Progress Dialog
 
@@ -298,7 +298,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
         }
     }
 
-//    class InfoBegin3 extends AsyncTask<String, String, String> {
+//    class InfoBegin40 extends AsyncTask<String, String, String> {
 //
 //        protected String doInBackground(String... args) {
 //
@@ -348,7 +348,7 @@ public class BackInDelran extends Activity implements GooglePlayServicesClient.C
 //        }
 //    }
 
-    class InfoBegin3 extends AsyncTask<String, String, String> {
+    class InfoBegin40 extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {
 
