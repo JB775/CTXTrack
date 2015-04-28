@@ -121,6 +121,11 @@ public class Login extends Activity implements View.OnClickListener {
 //            //remove this Toast!!!
 //            Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
 //        }
+        int click1 = 1;
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("clicked", click1);
+        editor.commit();
 
     }
 
